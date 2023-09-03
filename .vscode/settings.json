@@ -1,0 +1,17 @@
+{
+    "hostbridge.hosts": [
+        {
+            "hostName": "Demo",
+            "domainName": "10.1.2.73",
+            "regions": [
+                {
+                    "name": "Training 2",
+                    "HBJSport": 6040,
+                    "isSSL": false,
+                    "defaultUserID": "cust008",
+                    "repositories": []
+                }
+            ]
+        }
+    ]
+}
