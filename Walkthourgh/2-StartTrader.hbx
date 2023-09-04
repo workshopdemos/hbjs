@@ -1,0 +1,2 @@
+let hb = new HB.Session();
+
