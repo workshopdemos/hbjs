@@ -44,7 +44,7 @@ common.hbRunProto();
 writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
 
 /*
- * Using the line above see if you can output other fields off the "Real-Time Quote" screen.  
+ * Using the line above as a sample see if you can output other fields off the "Real-Time Quote" screen.  
  * 
  * Field names like VALUE and HELD are field names the programmer chose when TRAD was originally 
  * written.  We are not screen scraping but retrieving values using the field names the programmer
