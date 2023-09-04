@@ -1,0 +1,58 @@
+/*
+ * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
+ * new file name should be prefixed by your user id.  If your user id is mfwsuser8 your new file name would
+ * be mfwsuser8-getQuote.hbx
+ */
+let hb = new HB.Session();
+
+let common = require('common', 'hbutils');
+let debugging = require('debugging', 'hbutils');
+
+debugging.checkDebugControl();
+common.hbRunProto();
+
+/*
+ * Below is close to the code you should have had in the last step.  I've taken out some
+ * unnecessary statements like "hb.set('hb_cursor_pos', '1337');" because TRAD is not 
+ * sensitive to cursor position.  I've also wrappered the statments in a function definition.
+ * This allows us to get the "Real-Time Quote" for any company by simply passing
+ * a different company number.
+ * 
+ * However when you execute the code below (right click HB.js Run) you receive
+ * the same company with the same values.
+ * 
+ * Do you know why?
+ * 
+ * If you look at the flow of TRAD, you have to navigate back to the "Select Company" 
+ * screen before selecting the next compay.  On the Application Explorer you see
+ * that means pressing the F3 or PF3 key twice.  In the getQuote function below 
+ * we are not backing up to the Select Company screen.
+ * 
+ * The command to press the PF3 command is hb.run('HB_AID=PF3');  That command needs
+ * to be entered twice to back up to the select company screen.  Add it to getQuote
+ * now and retest.
+ * 
+ */
+
+function initialize() {
+    hb.set('hb_entry', 'trad');
+    hb.run('HB_AID=ENTER', 'T002');
+}
+
+
+function getQuote(companyNumber) {
+    hb.set('OPTION', companyNumber);
+    hb.run('HB_AID=ENTER', 'T003');
+
+    hb.set('OPT2', '1');
+    hb.run('HB_AID=ENTER', 'T004');
+
+    writeln('Company Name: ', hb.getFieldValue('COMP41'));
+    writeln('Total Value of shares held = ', hb.getFieldValue('VALUE'));
+    writeln();
+
+}
+
+initialize();
+getQuote('1');
+getQuote('2');
