@@ -17,11 +17,11 @@ common.hbRunProto();
 
 /*
  * Using the Application Explorer, run the TRAD transaction and get the Real-Time Quote for Casey Import Export.
- * Be sure and turn on "Code Flow" by clicking the purple arrow and clicking the toggle switch.  After starting TRAD: 
+ * Be sure and turn on "Code Flow" by clicking the purple arrow and clicking the toggle switch.  
  * 
- * Select Casey Import Export by entering a "1" in the input field and press enter.
- * 
- * Select New Real-Time Quote by entering a "1" in the input field and press enter.
+ * After starting TRAD: 
+ *      Select Casey Import Export by entering a "1" in the input field and press enter.
+ *      Select New Real-Time Quote by entering a "1" in the input field and press enter.
  * 
  * On the "Real-Time Quote" screen double click on any fields of interest, like "Number of Shares Held" and 
  * "Value of Shares Held".  Be sure and click on the values not the field labels.  Double clicking on these
@@ -50,4 +50,3 @@ writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
  * written.  We are not screen scraping but retrieving values using the field names the programmer
  * chose.
  */
-
