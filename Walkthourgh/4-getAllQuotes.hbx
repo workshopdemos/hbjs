@@ -1,7 +1,7 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
  * new file name should be prefixed by your user id.  If your user id is mfwsuser8 your new file name would
- * be mfwsuser8-getAllQuotes.hbx
+ * be mfwsuser8-4-getAllQuotes.hbx
  */
 
 let hb = new HB.Session();

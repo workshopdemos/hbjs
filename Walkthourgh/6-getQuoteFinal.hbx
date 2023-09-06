@@ -1,13 +1,13 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
  * new file name should be prefixed by your user id.  If your user id is mfwsuser8 your new file name would
- * be mfwsuser8-getQuoteFinal.hbx
+ * be mfwsuser8-6-getQuoteFinal.hbx
  */
 
 /*
  * Below is a near production ready web service.  Added are try catches to protect from errors and to be sure
  * to always return valid JSON.  Also the option to return XML instead of JSON was added along with more
- * more information on how the service ran, elapsed time, number of transaction executed, etc
+ * information on how the service ran, elapsed time, number of transaction executed, etc
  */
 
 // If I am going to measure the elapsed time I need to capture the start time of the service in microseconds
@@ -143,7 +143,7 @@ main();
  * "HB.js Make". You can invoke the deployed web service by using a web browser and opening the link 
  * below.  Be sure and change the service name to the name you used above.  Do not include the ".hbx" 
  * 
- * https://external-777049899224769.proxy.sn.ws.broadcom.com/hbscript/mfwsuser8-getQuoteFinal?companies=1,3&type=xml
+ * https://external-777049899224769.proxy.sn.ws.broadcom.com/hbscript/mfwsuser8-6-getQuoteFinal?companies=1,3&type=xml
  */
 
 

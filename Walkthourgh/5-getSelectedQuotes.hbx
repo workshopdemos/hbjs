@@ -1,7 +1,7 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
  * new file name should be prefixed by your user id.  If your user id is mfwsuser8 your new file name would
- * be mfwsuser8-getSelectedQuotes.hbx
+ * be mfwsuser8-5-getSelectedQuotes.hbx
  */
 
 let hb = new HB.Session();
@@ -17,11 +17,11 @@ common.hbRunProto();
  *
  *  
  * Below is most of the code you should have had at the end of 4-getAllQuotes. This service gets
- * all company quotes, but what if you only want the quote for company 1 or companies 1 and 3.  We
- * should be able to pass a parameter to the service to specifiy what companies we want the quote
- * for instead of always returning all companies.  We will do that by passing a parameter on the 
- * query string to specifiy what companies we want quotes.  Let's get our input in the
- * initialize function
+ * all company quotes, but what if you only want the quote for company 1 or for companies 1 and 3, 
+ * or for some other combination.  We should be able to pass a parameter to the service to specifiy 
+ * what companies we want the real-time quote for instead of always returning all companies.  
+ * We will do that by passing a parameter on the query string to specifiy what companies we want 
+ * quotes.  Let's get our input in the initialize function.
  */
 
 var response = new Array();
