@@ -19,7 +19,7 @@ common.hbRunProto();
  * the HBJS TERMINAL OUTPUT tab.
  *  
  * Below is most of the code you should have had in the last step.  I've added a main and
- * terminate function to better seperate and identify sections of code.  I've also added
+ * terminate function to better separate and identify sections of code.  I've also added
  * a "response" global variable that I am going to use to build up the data I want to return
  * to the calling client.
  */
@@ -41,7 +41,9 @@ function terminate() {
      * deletes the remaining HB.js resources leaving nothing on the host.  The session would automatically
      * timeout after 5 minutes of inactivity, but in a highly active system that might leave thousands
      * or 10's of thousands of unused sessions consuming resources until they are automatically deleted.
-     * You should always clean up your session at the conclusion or your service.
+     * You should always clean up your session at the conclusion or your service.  hb_delete_session along
+     * with all HB.js are documented here:
+     * https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0.html
      */
     hb.run('hb_aid=pf12&hb_delete_session=1');
 
@@ -75,8 +77,8 @@ function getQuote(companyNumber) {
     }
 
     /*
-     * Using the Application Explorer and line 67 above as an example add the following 
-     * fields from the "Real-Time Quote" to the JavaScript object above:
+     * Using the Application Explorer and line 75 above as an example add the following 
+     * fields from the "Real-Time Quote" to the JavaScript object "quote" above:
      * 
      *      Current Share Price
      *      Number of Shares Held
@@ -85,7 +87,9 @@ function getQuote(companyNumber) {
      * After adding the fields retest your service (right-click HB.js Run)
      */
 
-    // Add quote to the end of the response array
+    /*
+     * Add quote to the end of the response array
+     */
     response.push(quote);
 
     hb.run('hb_aid=pf3', 'T003');
