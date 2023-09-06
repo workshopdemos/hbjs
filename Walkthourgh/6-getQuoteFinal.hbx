@@ -24,7 +24,7 @@ common.hbRunProto();
  * Lets update response to return more information than just the real-time quote
  */
 var response = {
-    quotes: [],             // quotes will still containe the real time quote for each company
+    quotes: [],             // quotes will still contain the real time quote for each company
     status: {               // Create a status block to keep all the info about how the service ran
         success: false,     // Create a single flag the client can check to see if the service ran okay
         elapsedTime: 0,     // How long did it take for the service to run, elapsed time
