@@ -129,6 +129,7 @@ function main () {
         // can be produced in the JSON or XML output
         response.status.errors.push(e);
     } finally {
+        // If we run successfully or not we always want to run terminate
         terminate(input.type);
     }
 }

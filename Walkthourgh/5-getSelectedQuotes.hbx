@@ -18,9 +18,9 @@ common.hbRunProto();
  *  
  * Below is most of the code you should have had at the end of 4-getAllQuotes. This service gets
  * all company quotes, but what if you only want the quote for company 1 or companies 1 and 3.  We
- * need to be able to pass a parameter to the service to specifiy what companies we want the quote
+ * should be able to pass a parameter to the service to specifiy what companies we want the quote
  * for instead of always returning all companies.  We will do that by passing a parameter on the 
- * query string to specifiy what companies we want quotes for.  Let's get our input in the
+ * query string to specifiy what companies we want quotes.  Let's get our input in the
  * initialize function
  */
 
@@ -43,13 +43,13 @@ function initialize() {
 
     /* 
      * The value of companies above will be a string containing "1,3".  We need to be able to 
-     * iterate over the company numbers.  Luckly there is a method called "split" that hangs off
-     * all strings that can split a string into an array based on a seperator.
+     * iterate over the company numbers.  Luckily there is a method called "split" that hangs off
+     * all strings that can split a string into an array based on a separator.
      * companies.split(',') will separate the company numbers into array elements allowing us to
      * easliy interate over them.
      * 
-     * We could put companies in a global variable, but using too many globals is considered 
-     * poor programming practice, instead will will split the string into an array and pass it
+     * We could put companies in a global variable, but using too many global variables is considered 
+     * poor programming, instead we will split the string into an array and pass it
      * back to the main function.
      */
 
@@ -105,7 +105,7 @@ function main () {
      * Below is our orginal loop.  Updated it to iterate over the list of 
      * companies.  Again there are lots of examples of JavaScript for loops
      * iterating over a list of arrya elements on the net.  After updating
-     * thw loop below "make it" (right-click HB.js Make) and then run it from a 
+     * the loop below "make it" (right-click HB.js Make) and then run it from a 
      * browser
      */ 
     
