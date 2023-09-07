@@ -1,5 +1,6 @@
 Link to Detailed Workshop Walkthrough Instructions
 https://infominasdnbhd.box.com/s/uv53r5c2ccnutyutafewvjlpjbf9od77
+https://docs.google.com/document/d/1VtCyiUlTV-Wg_3P3Ew0Mb60wnQYqYK93/edit?usp=share_link&ouid=106052479521607455912&rtpof=true&sd=true
 
 HB.js Documentation - Installation and Usage
 https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0.html
