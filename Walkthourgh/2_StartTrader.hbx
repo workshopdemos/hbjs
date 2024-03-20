@@ -1,7 +1,7 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser8 your new file name would
- * be mfwsuser8-2-StartTrader.hbx
+ * new file name should be prefixed by your user id.  If your user id is mfwsuser25 your new file name would
+ * be mfwsuser25_StartTrader.hbx
  */
 
 // Create the hb object that can interact with CICS transactions
@@ -38,7 +38,7 @@ common.hbRunProto();
 // ------------- Paste the copied code above here
 
 
-// Right-click in this editor window and select "HB.js Run"  The total value of shares held for Casey Import Export
+// Right-click in this editor window and select "HB.js Commands > Run"  The total value of shares held for Casey Import Export
 // should be displaied in the HBJS TERMINAL OUTPUT below
 
 writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
