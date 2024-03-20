@@ -1,23 +1,23 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
  * new file name should be prefixed by your user id.  If your user id is mfwsuser8 your new file name would
- * be mfwsuser8-1-HelloWorld.hbx
+ * be mfwsuser255_HelloWorld.hbx
  * 
  * On line 24 below update "Your Message Here" to whatever text you desire.
  * 
- * You can execute the code below by right-clicking in the editor window and selecting "HB.js Run".
+ * You can execute the code below by right-clicking in the editor window and selecting "HB.js Commands > Run".
  * When you execute this code it actually runs inside CICS.  The output will appear
  * in the HBJS TERMINAL OUTPUT tab below.
  * 
  * You can compile and deploy this code by right-clicking in this editor window and selecting 
- * "HB.js Make".  If no syntax errors occurred in the compile you will see the message "Build complete"
+ * "HB.js Commands > Make".  If no syntax errors occurred in the compile you will see the message "Build complete"
  * in the HBJS TERMINAL OUTPUT tab below.  When you successfully "make" a script it is compiled and 
  * saved in a VSAM repository inside CICS.
  * 
  * You can invoke this deployed web service by using a web browser and opening the link below.  Be sure and
  * change the service name to the name you used above.  Do not include the ".hbx" 
  * 
- * https://external-777049899224769.proxy.sn.ws.broadcom.com/hbscript/mfwsuser8-1-HelloWorld
+ * https://external-777049899224769.proxy.sn.ws.broadcom.com/hbscript/mfwsuser25_HelloWorld
  * 
  */
 
