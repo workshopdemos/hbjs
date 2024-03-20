@@ -1,7 +1,7 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser8 your new file name would
- * be mfwsuser8-3-getQuote.hbx
+ * new file name should be prefixed by your user id.  If your user id is mfwsuser25 your new file name would
+ * be mfwsuser25_getQuote.hbx
  */
 let hb = new HB.Session();
 
@@ -20,7 +20,7 @@ common.hbRunProto();
  * This allows us to get the "Real-Time Quote" for any company by simply passing
  * a different company number.
  * 
- * However when you execute the code below (try it: right click HB.js Run) you receive
+ * However when you execute the code below (try it: right click HB.js Commands > Run) you receive
  * the same company with the same values.
  * 
  * Do you know why?
