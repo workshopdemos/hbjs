@@ -13,7 +13,7 @@ debugging.checkDebugControl();
 common.hbRunProto();
 
 /*
- * Application Explorer: https://external-777049899224769.proxy.sn.ws.broadcom.com/webtools/index.html
+ * Application Explorer: https://external-157476462544637.proxy.sn.ws.broadcom.com/webtools/index.html
  *
  *  
  * Below is most of the code you should have had at the end of 4-getAllQuotes. This service gets
