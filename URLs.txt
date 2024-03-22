@@ -1,5 +1,5 @@
 Link to Detailed Workshop Walkthrough Instructions
-https://github.com/workshopdemos/Broadcom-MSD-Workshops/HBJS_VSCode_Workshop_24
+https://github.com/workshopdemos/Broadcom-MSD-Workshops
 https://docs.google.com/document/d/1YSmq39zPuNNu-Ma5JbcwjKPmI9JrGAs3/edit?usp=drive_link&ouid=115213166737515143215&rtpof=true&sd=true
 
 HB.js Documentation - Installation and Usage
