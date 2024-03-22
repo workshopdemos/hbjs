@@ -1,6 +1,6 @@
 Link to Detailed Workshop Walkthrough Instructions
 https://github.com/workshopdemos/Broadcom-MSD-Workshops
-https://docs.google.com/document/d/1YSmq39zPuNNu-Ma5JbcwjKPmI9JrGAs3/edit?usp=drive_link&ouid=115213166737515143215&rtpof=true&sd=true
+https://drive.google.com/drive/folders/1ZOepXb8myX9cE93E2XZHSJfJSkWkKLOB
 
 HB.js Documentation - Installation and Usage
 https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0.html
