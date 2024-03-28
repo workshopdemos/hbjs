@@ -16,6 +16,8 @@ debugging.checkDebugControl();
 common.hbRunProto();
 
 /*
+ * Application Explorer: https://external-157476462544637.proxy.sn.ws.broadcom.com/webtools/index.html
+ * 
  * Using the Application Explorer, run the TRAD transaction and get the Real-Time Quote for Casey Import Export.
  * Be sure and turn on "Code Flow" by clicking the purple arrow and clicking the toggle switch.  
  * 
@@ -26,8 +28,6 @@ common.hbRunProto();
  * On the "Real-Time Quote" screen double click on any fields of interest, like "Number of Shares Held" and 
  * "Value of Shares Held".  Be sure and click on the values not the field labels.  Double clicking on these
  * fields will add them to the "Code Flow". 
- * 
- * Application Explorer: https://external-157476462544637.proxy.sn.ws.broadcom.com/webtools/index.html
  * 
  * Copy the code generated in "Code Flow" and paste it below
  */
