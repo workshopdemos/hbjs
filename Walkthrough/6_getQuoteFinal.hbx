@@ -143,7 +143,8 @@ main();
  * "HB.js Commands > Make". You can invoke the deployed web service by using a web browser and opening the link 
  * below.  Be sure and change the service name to the name you used above.  Do not include the ".hbx" 
  * 
- * https://external-157476462544637.proxy.sn.ws.broadcom.com/hbscript/mfwsuser25_getQuoteFinal?companies=1,3&type=xml
+ * Remember to change the "##" to your user number 
+ * https://external-157476462544637.proxy.sn.ws.broadcom.com/hbscript/mfwsuser##_getQuoteFinal?companies=1,3&type=xml
  */
 
 
