@@ -17,11 +17,11 @@ common.hbRunProto();
  *
  *  
  * Below is most of the code you should have had at the end of 4-getAllQuotes. This service gets
- * all company quotes, but what if you only want the quote for company 1 or for companies 1 and 3, 
+ * all company quotes, but what if you only want the quote for company 1, for companies 1 and 3, 
  * or for some other combination.  We should be able to pass a parameter to the service to specifiy 
- * what companies we want the real-time quote for instead of always returning all companies.  
- * We will do that by passing a parameter on the query string to specifiy what companies we want 
- * quotes.  Let's get our input in the initialize function.
+ * which companies we want the real-time quote for instead of always returning all companies.  
+ * We will do this by passing a parameter on the query string to specifiy which companies we want 
+ * quotes for.  Let's get our input in the initialize function.
  */
 
 var response = new Array();
@@ -118,7 +118,8 @@ function main () {
      * "HB.js Commands > Make". You can invoke the deployed web service by using a web browser and opening the link 
      * below.  Be sure and change the service name to the name you used above.  Do not include the ".hbx" 
      * 
-     * https://external-157476462544637.proxy.sn.ws.broadcom.com/hbscript/mfwsuser25_getSelectedQuotes?companies=1,3
+     * Remeber to change the "##" to your user number. 
+     * https://external-157476462544637.proxy.sn.ws.broadcom.com/hbscript/mfwsuser##_getSelectedQuotes?companies=1,3
      */
 
     terminate();
