@@ -1,7 +1,7 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser25 your new file name would
- * be mfwsuser25_getQuoteFinal.hbx
+ * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
+ * be mfwsuser##_getQuoteFinal.hbx
  */
 
 /*
@@ -144,7 +144,7 @@ main();
  * below.  Be sure and change the service name to the name you used above.  Do not include the ".hbx" 
  * 
  * Remember to change the "##" to your user number 
- * https://external-157476462544637.proxy.sn.ws.broadcom.com/hbscript/mfwsuser##_getQuoteFinal?companies=1,3&type=xml
+ * https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/mfwsuser##_getQuoteFinal?companies=1,3&type=xml
  */
 
 
