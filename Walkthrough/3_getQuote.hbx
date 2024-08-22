@@ -1,7 +1,7 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser25 your new file name would
- * be mfwsuser25_getQuote.hbx
+ * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
+ * be mfwsuser##_getQuote.hbx
  */
 let hb = new HB.Session();
 
@@ -12,8 +12,6 @@ debugging.checkDebugControl();
 common.hbRunProto();
 
 /*
- * Application Explorer: https://external-157476462544637.proxy.sn.ws.broadcom.com/webtools/index.html
- *
  * Below is close to the code you should have had in the last step.  I've taken out some
  * unnecessary statements like "hb.set('hb_cursor_pos', '1337');" because TRAD is not 
  * sensitive to cursor position.  I've also wrappered the statements in a function definitions.
