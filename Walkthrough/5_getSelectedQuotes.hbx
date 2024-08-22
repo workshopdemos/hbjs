@@ -1,7 +1,7 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser25 your new file name would
- * be mfwsuser25_getSelectedQuotes.hbx
+ * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
+ * be mfwsuser##_getSelectedQuotes.hbx
  */
 
 let hb = new HB.Session();
@@ -13,8 +13,6 @@ debugging.checkDebugControl();
 common.hbRunProto();
 
 /*
- * Application Explorer: https://external-157476462544637.proxy.sn.ws.broadcom.com/webtools/index.html
- *
  *  
  * Below is most of the code you should have had at the end of 4-getAllQuotes. This service gets
  * all company quotes, but what if you only want the quote for company 1, for companies 1 and 3, 
@@ -119,7 +117,7 @@ function main () {
      * below.  Be sure and change the service name to the name you used above.  Do not include the ".hbx" 
      * 
      * Remeber to change the "##" to your user number. 
-     * https://external-157476462544637.proxy.sn.ws.broadcom.com/hbscript/mfwsuser##_getSelectedQuotes?companies=1,3
+     * https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/mfwsuser##_getSelectedQuotes?companies=1,3
      */
 
     terminate();
