@@ -1,7 +1,7 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser25 your new file name would
- * be mfwsuser25_StartTrader.hbx
+ * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
+ * be mfwsuser##_StartTrader.hbx
  */
 
 // Create the hb object that can interact with CICS transactions
@@ -16,8 +16,6 @@ debugging.checkDebugControl();
 common.hbRunProto();
 
 /*
- * Application Explorer: https://external-157476462544637.proxy.sn.ws.broadcom.com/webtools/index.html
- * 
  * Using the Application Explorer, run the TRAD transaction and get the Real-Time Quote for Casey Import Export.
  * Be sure and turn on "Code Flow" by clicking the purple arrow and clicking the toggle switch.  
  * 
