@@ -5,14 +5,5 @@ https://drive.google.com/drive/folders/1ZOepXb8myX9cE93E2XZHSJfJSkWkKLOB
 HB.js Documentation - Installation and Usage
 https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0.html
 
-Application Explorer
-https://external-157476462544637.proxy.sn.ws.broadcom.com/webtools/index.html
-
-Trader Swagger Example
-https://external-157476462544637.proxy.sn.ws.broadcom.com/hbscript/traderS.html
-
-Trader AJAX Example
-https://external-157476462544637.proxy.sn.ws.broadcom.com/hbscript/template.html
-
 Service Test
-https://external-157476462544637.proxy.sn.ws.broadcom.com/hbutils/st-index.html
+https://external-943025290693663.proxy.sn.ws.broadcom.com/hbutils/st-index.html
