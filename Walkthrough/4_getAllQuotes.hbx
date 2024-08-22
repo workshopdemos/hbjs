@@ -1,7 +1,7 @@
 /*
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser25 your new file name would
- * be mfwsuser25_getAllQuotes.hbx
+ * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
+ * be mfwsuser##_getAllQuotes.hbx
  */
 
 let hb = new HB.Session();
@@ -13,8 +13,6 @@ debugging.checkDebugControl();
 common.hbRunProto();
 
 /*
- * Application Explorer: https://external-157476462544637.proxy.sn.ws.broadcom.com/webtools/index.html
- *
  * Before making any changes run the service (right-click HB.js Commands > Run) and view the output in
  * the HBJS TERMINAL OUTPUT tab.
  *  
