@@ -1,5 +1,5 @@
-# HB.js in VS Code : Prague MTE 2024
-## Prague MTE Workshop Scenarios
+# HB.js in VS Code : Plano MTE 2024
+## Plano MTE Workshop Scenarios
 
 1.) Change a line of JavaScript 
 
@@ -7,6 +7,7 @@
 
 3.) Change a Script to Execute the TRAD Transaction Twice 
 
+## Additional Scenarios 
 4.) Add Additional Fields to the 3rd Script 
 
 5.) Modify the Code to Get only Selected Companies 
