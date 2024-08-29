@@ -2,6 +2,7 @@
  * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
  * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
  * be mfwsuser##_getQuote.hbx
+ * 
  */
 let hb = new HB.Session();
 
@@ -49,6 +50,7 @@ common.hbRunProto();
  * hb.run('HB_AID=PF3', 'BOB');  You can get the BMS map name from the Application Explorer.  If
  * you get it wrong the error message will tell you the BMS map name that was encountered and 
  * you can correct your code and retest.
+ * 
  */
 
 function initialize() {
