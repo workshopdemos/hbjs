@@ -3,7 +3,7 @@
  * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
  * be mfwsuser##_HelloWorld.hbx
  * 
- * On line 24 below update "Your Message Here" to whatever text you desire.
+ * On line 25 below update "Your Message Here" to whatever text you desire.
  * 
  * You can execute the code below by right-clicking in the editor window and selecting "HB.js Commands > Run".
  * When you execute this code it actually runs inside CICS.  The output will appear
