@@ -1,5 +1,5 @@
-# HB.js in VS Code : Plano MTE 2024
-## Plano MTE Workshop Scenarios
+# HB.js in VS Code : GSE UK 2024
+## GSK UK Workshop Scenarios
 
 1.) Change a line of JavaScript 
 
