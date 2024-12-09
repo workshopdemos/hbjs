@@ -1,5 +1,5 @@
-# HB.js in VS Code : GSE UK 2024
-## GSK UK Workshop Scenarios
+# HB.js in VS Code
+## Workshop Scenarios
 
 1.) Change a line of JavaScript 
 
