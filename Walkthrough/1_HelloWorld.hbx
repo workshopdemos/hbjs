@@ -1,25 +1,29 @@
 /*
- * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
- * be mfwsuser##_HelloWorld.hbx
+ * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
+ * new file name has been provided in your WorkshopScenario.pdf
+ * Format: Cust0##_HelloWorld
+ */
+
+/*
+ * Add in a writeln("") below the comment block with your own unique message included in the quotes. 
  * 
- * On line 25 below update "Your Message Here" to whatever text you desire.
- * 
- * You can execute the code below by right-clicking in the editor window and selecting "HB.js Commands > Run".
+ * First execute this file by right-clicking in the editor window and selecting "HB.js Commands > Run".
  * When you execute this code it actually runs inside CICS.  The output will appear
  * in the HBJS TERMINAL OUTPUT tab below.
  * 
- * You can compile and deploy this code by right-clicking in this editor window and selecting 
+ * Now store this file on the host by right-clicking in the editor window and selecting "HB.js Commands > Put".
+ * 
+ * Finally compile and deploy this code by right-clicking in this editor window and selecting 
  * "HB.js Commands > Make".  If no syntax errors occurred in the compile you will see the message "Build complete"
  * in the HBJS TERMINAL OUTPUT tab below.  When you successfully "make" a script it is compiled and 
  * saved in a VSAM repository inside CICS.
  * 
- * You can invoke this deployed web service by using a web browser and opening the link below.  Be sure and
- * change the service name to the name you used above.  Do not include the ".hbx" 
+ * You can invoke this deployed web service or access the stored code by using a web browser and opening the links below.  Be sure and
+ * change the service name to the name you used above.
  * 
  * Remember to change the "##" to your user number 
- * https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/mfwsuser##_HelloWorld
- * 
+ * Results of "Put"
+ * https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/CUST0##_HelloWorld.hbx
+ * To see the "Make" output, remove the .hbx
+ * https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/CUST0##_HelloWorld
  */
-
-writeln("Your Message Here");
