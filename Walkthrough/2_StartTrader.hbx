@@ -1,5 +1,5 @@
-/*
- * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
+ /*
+ * Rename this file by right clicking the file name in the explorer tab to the left and selecting rename.  The 
  * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
  * be mfwsuser##_StartTrader.hbx
  */
@@ -15,10 +15,15 @@ let debugging = require('debugging', 'hbutils');
 debugging.checkDebugControl();
 common.hbRunProto();
 
-/*
- * Using the Application Explorer, run the TRAD transaction and get the Real-Time Quote for Casey Import Export.
- * Be sure and turn on "Code Flow" by clicking the purple arrow and clicking the toggle switch.  
+ /* 
+ * The goal of this script is to create an API that gathers the total value of shares held for your chosen company and prints it to the screen. 
+ * This will be done leveraging the application explorer, playback functionality and code flow within the HB.js extension. 
+ *
+ *
+ * Open the Application Explorer and enter the starting transaction "TRAD". 
+ * Find the Code Flow by opening the tab on the right hand side of your screen. Watch as it updates with each of the following steps. 
  * 
+ *  
  * After starting TRAD: 
  *      Select Casey Import Export by entering a "1" in the input field and press enter.
  *      Select New Real-Time Quote by entering a "1" in the input field and press enter.
