@@ -1,0 +1,117 @@
+/*
+ * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
+ * new file name has been provided in your WorkshopScenario.pdf
+ * Format: Cust0##_getAllQuotes
+ */
+
+let hb = new HB.Session();
+
+let common = require('common', 'hbutils');
+let debugging = require('debugging', 'hbutils');
+
+debugging.checkDebugControl();
+common.hbRunProto();
+
+/*
+ * Now run the service (right-click HB.js Commands > Run) and view the output in
+ * the HBJS TERMINAL OUTPUT tab.
+ *  
+ * Below is most of the code you should have had in the last step.  I've added a main and
+ * terminate function to better separate and identify sections of code.  I've also added
+ * a "response" global variable that I am going to use to build up the data I want to return
+ * to the calling client.
+ */
+
+/*
+ * Here I am declaring "response" as a global array variable.  It is global because it is 
+ * declared outside of any function.
+ */
+var response = new Array();
+
+function initialize() {
+    hb.set('hb_entry', 'trad');
+    hb.run('HB_AID=ENTER', 'T002');
+}
+
+function terminate() {
+    /*
+     * PF12 exits the trader application no matter what screen you are on, the hb_delete_session=1 
+     * deletes the remaining HB.js resources leaving nothing on the host.  The session would automatically
+     * timeout after 5 minutes of inactivity, but in a highly active system that might leave thousands
+     * or 10's of thousands of unused sessions consuming resources until they are automatically deleted.
+     * You should always clean up your session at the conclusion or your service.  hb_delete_session along
+     * with all HB.js are documented here:
+     * https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0.html
+     */
+    hb.run('hb_aid=pf12&hb_delete_session=1');
+
+    /*
+     * Convert response to JSON and write it out
+     */
+    write(common.toJSONString(response));
+}
+
+
+function getQuote(companyNumber) {
+    hb.set('OPTION', companyNumber);
+    hb.run('HB_AID=ENTER', 'T003');
+
+    hb.set('OPT2', '1');
+    hb.run('HB_AID=ENTER', 'T004');
+
+    // writeln('Company Name: ', hb.getFieldValue('COMP41'));
+    // writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
+    // writeln();
+
+    /*
+     * Instead of writing anything out here I'm going to put my 
+     * output into a JavaScript object and let my "terminate" function
+     * produce JSON output.
+     */
+
+    let quote = {
+        companyName: hb.getFieldValue('COMP41'),
+        totalValue: hb.getFieldValue('VALUE'),
+        currentPrice: hb.getFieldValue('SHRNOW'),
+        sharesHeld: hb.getFieldValue('HELD'),
+        buyCommission: hb.getFieldValue('BUY'),
+        sellCommission: hb.getFieldValue('Sell')
+    }
+
+    /*
+     * Using the Application Explorer and line 75 above as an example add the following 
+     * fields from the "Real-Time Quote" to the JavaScript object "quote" above:
+     * 
+     *      Current Share Price
+     *      Number of Shares Held
+     *      Commission Price for buying and selling shares
+     * 
+     * After adding the fields retest your service (right-click HB.js Run)
+     */
+
+    /*
+     * Add quote to the end of the response array
+     */
+    response.push(quote);
+
+    hb.run('hb_aid=pf3', 'T003');
+    hb.run('hb_aid=pf3', 'T002');
+
+}
+
+/*
+ * Update the main function below to get all four companies.  You could do that simply by 
+ * adding to more calls to getQuote, but it would be better to use a for-loop to iterate over
+ * the four companies.  It is easy to find the syntax and examples of JavaScript, search for
+ * "JavaScript for loop".  After updating, run the service (right-click HB.js Commands > Run)
+ */
+
+function main () {
+    initialize();
+    for(let i = 1; i < 5; i++){
+        getQuote(i);
+    }
+    terminate();
+}
+
+main();

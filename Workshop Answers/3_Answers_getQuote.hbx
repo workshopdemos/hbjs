@@ -1,0 +1,80 @@
+/*
+ * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
+ * new file name has been provided in your WorkshopScenario.pdf
+ * Format: Cust0##_getQuote
+ */
+
+let hb = new HB.Session();
+
+let common = require('common', 'hbutils');
+let debugging = require('debugging', 'hbutils');
+
+debugging.checkDebugControl();
+common.hbRunProto();
+
+/*
+ * Below is close to the code you should have had in the last step. I've also wrappered the statements in a function definitions.
+ * This allows us to get the "Real-Time Quote" for any company by simply passing
+ * a different company number.
+ * 
+ * However when you execute the code below (try it: right click HB.js Commands > Run) you receive
+ * the same company with the same values.
+ * 
+ * Do you know why?
+ * 
+ * If you look at the flow of TRAD, you have to navigate back to the "Select Company" 
+ * screen before selecting the next company. On the Application Explorer you see
+ * that means pressing the F3 or PF3 key twice. In the getQuote function below 
+ * we are not backing up to the Select Company screen. HB.js does not change the flow
+ * of the transaction.
+ * 
+ * The command to press the PF3 is hb.run('HB_AID=PF3'); That command needs
+ * to be entered twice to back up to the select company screen. Add it to the getQuote
+ * function now and retest.
+ * 
+ * If you have done the above correctly you will receive Total Value of Shares Held for two 
+ * companies. But notice that the hb.run you added does not look like other hb.runs, they all 
+ * have two parameters whereas yours only has one:  
+ * hb.run('HB_AID=ENTER', 'T002'); vs hb.run('HB_AID=PF3');
+ * 
+ * The T002 above is the BMS map name for that screen. The hb.run is checking to make sure you 
+ * ended up on the screen you expected to be on after the command was executed. The statement 
+ * hb.run('HB_AID=ENTER', 'T002') says that after pressing the enter I expect to be on screen T002 
+ * and if not then throw an error.
+ * 
+ * How do you know what the BMS map names are? They are displayed in the lower left corner 
+ * of the application explorer. Update the two statements you added with a second parameter 
+ * that is the BMS map name the application should be on after pressing the PF3 key.
+ * hb.run('HB_AID=PF3', 'BOB'); You can get the BMS map name from the Application Explorer. If
+ * you get it wrong the error message will tell you the BMS map name that was encountered and 
+ * you can correct your code and retest.
+ * 
+ * Bonus Question: Why did the initial run of the provided script not throw a screen error? 
+ * 
+ */
+
+function initialize() {
+    hb.set('hb_entry', 'trad');
+    hb.run('HB_AID=ENTER', 'T002');
+}
+
+
+function getQuote(companyNumber) {
+    hb.set('OPTION', companyNumber);
+    hb.run('HB_AID=ENTER', 'T003');
+
+    hb.set('OPT2', '1');
+    hb.run('HB_AID=ENTER', 'T004');
+
+    writeln('Company Name: ', hb.getFieldValue('COMP41'));
+    writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
+    writeln();
+
+    hb.run('HB_AID=PF3');
+    hb.run('HB_AID=PF3');
+
+}
+
+initialize();
+getQuote('1');
+getQuote('4');
