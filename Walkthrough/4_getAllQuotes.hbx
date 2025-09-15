@@ -1,7 +1,7 @@
 /*
- * Rename this file by right clicking the file name in the explorer to the right and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
- * be mfwsuser##_getAllQuotes.hbx
+ * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
+ * new file name has been provided in your WorkshopScenario.pdf
+ * Format: Cust0##_getAllQuotes
  */
 
 let hb = new HB.Session();
@@ -13,7 +13,7 @@ debugging.checkDebugControl();
 common.hbRunProto();
 
 /*
- * Before making any changes run the service (right-click HB.js Commands > Run) and view the output in
+ * Now run the service (right-click HB.js Commands > Run) and view the output in
  * the HBJS TERMINAL OUTPUT tab.
  *  
  * Below is most of the code you should have had in the last step.  I've added a main and
