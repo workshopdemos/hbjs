@@ -1,54 +1,78 @@
- /*
- * Rename this file by right clicking the file name in the explorer tab to the left and selecting rename.  The 
- * new file name should be prefixed by your user id.  If your user id is mfwsuser## your new file name would
- * be mfwsuser##_StartTrader.hbx
+/*
+ * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
+ * new file name has been provided in your WorkshopScenario.pdf
+ * Format: Cust0##_getQuote
  */
 
-// Create the hb object that can interact with CICS transactions
+
 let hb = new HB.Session();
 
-// "require" JavaScript packages with predefined utilities that we will use when creating services
 let common = require('common', 'hbutils');
 let debugging = require('debugging', 'hbutils');
 
-// Using utilities out of the packages above to setup some default error checking and debugging
 debugging.checkDebugControl();
 common.hbRunProto();
 
- /* 
- * The goal of this script is to create an API that gathers the total value of shares held for your chosen company and prints it to the screen. 
- * This will be done leveraging the application explorer and code flow within the HB.js extension. 
- *
- *
- * Open the Application Explorer and enter the starting transaction "TRAD". (Screenshots 5&6)
- * Find the Code Flow by opening the tab on the right hand side of your screen. Watch as it 
- * updates with each of the following steps. (Screenshot 7)
- * 
- *  
- * After starting TRAD: 
- *      Select Casey Import Export by entering a "1" in the input field and press enter. (Screenshot 8)
- *      Select New Real-Time Quote by entering a "1" in the input field and press enter. (Screenshot 9)
- * 
- * On the "Real-Time Quote" screen double click on any fields of interest, like the values for "Number of Shares Held" and 
- * "Value of Shares Held". Double clicking on these fields will add them to the "Code Flow". (Screenshot 10)
- * 
- * Copy the code generated in "Code Flow" and paste it below
- */
-
-// ------------- Paste the copied code below here
-
-
-// ------------- Paste the copied code above here
-
-
-// Add a writeln to your getFieldValue in the copied code like the below example
-// writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
-
-// Right-click in this editor window and select "HB.js Commands > Run"  The total value of shares held for Casey Import Export
-// should be displayed in the HBJS TERMINAL OUTPUT below
-
 /*
- * Field names like VALUE and HELD are field names the programmer chose when TRAD was originally 
- * written.  We are not screen scraping but retrieving values using the field names the programmer
- * chose.
+ * Below is close to the code you should have had in the last step.  I've taken out some
+ * unnecessary statements like "hb.set('hb_cursor_pos', '1337');" because TRAD is not 
+ * sensitive to cursor position.  I've also wrappered the statements in a function definitions.
+ * This allows us to get the "Real-Time Quote" for any company by simply passing
+ * a different company number.
+ * 
+ * However when you execute the code below (try it: right click HB.js Commands > Run) you receive
+ * the same company with the same values.
+ * 
+ * Do you know why?
+ * 
+ * If you look at the flow of TRAD, you have to navigate back to the "Select Company" 
+ * screen before selecting the next company.  On the Application Explorer you see
+ * that means pressing the F3 or PF3 key twice.  In the getQuote function below 
+ * we are not backing up to the Select Company screen.  HB.js does not change the flow
+ * of the transaction.
+ * 
+ * The command to press the PF3 is hb.run('HB_AID=PF3');  That command needs
+ * to be entered twice to back up to the select company screen.  Add it to getQuote
+ * function now and retest.
+ * 
+ * If you have done the above correctly you will receive Total Value of Shares Held for two 
+ * companies.  But notice that the hb.run you added does not look like other hb.runs, they all 
+ * have two parameters whereas yours only has one:  
+ * hb.run('HB_AID=ENTER', 'T002'); vs hb.run('HB_AID=PF3');
+ * 
+ * The T002 above is the BMS map name for that screen.  The hb.run is checking to make sure you 
+ * ended up on the screen you expected to be on after the command was executed.  The statement 
+ * hb.run('HB_AID=ENTER', 'T002') says that after pressing the enter I expect to be on screen T002 
+ * and if not then throw an error.
+ * 
+ * How do you know what the BMS map names are?  They are displayed in the lower left corner 
+ * of the applicaiton explorer.  Update the two statements you added with a second parameter 
+ * that is the BMS map name the application should be on after pressing the PF3 key.
+ * hb.run('HB_AID=PF3', 'BOB');  You can get the BMS map name from the Application Explorer.  If
+ * you get it wrong the error message will tell you the BMS map name that was encountered and 
+ * you can correct your code and retest.
+ * 
  */
+
+function initialize() {
+    hb.set('hb_entry', 'trad');
+    hb.run('HB_AID=ENTER', 'T002');
+}
+
+
+function getQuote(companyNumber) {
+    hb.set('OPTION', companyNumber);
+    hb.run('HB_AID=ENTER', 'T003');
+
+    hb.set('OPT2', '1');
+    hb.run('HB_AID=ENTER', 'T004');
+
+    writeln('Company Name: ', hb.getFieldValue('COMP41'));
+    writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
+    writeln();
+
+}
+
+initialize();
+getQuote('1');
+getQuote('2');
