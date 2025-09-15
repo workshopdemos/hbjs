@@ -1,15 +1,16 @@
 # HB.js in VS Code
 ## Workshop Scenarios
 
-1.) Change a line of JavaScript 
+1.) Hello World API
 
-2.) Generate Code with the Application Explorer
+2.) Generate Code with the Application Explorer and Code Flow
 
-3.) Change a Script to Execute the TRAD Transactions Twice 
+3.) Debugging Intro Using BMS Maps
+
+4.) HB.js Best Practices
+
+5.) Accepting Query String Input 
+
+6.) Nearly Production Ready Review 
 
 ## Additional Scenarios 
-4.) Add Additional Fields to the 3rd Script 
-
-5.) Modify the Code to Get only Selected Companies 
-
-6.) Group Walkthrough of New Ideas
