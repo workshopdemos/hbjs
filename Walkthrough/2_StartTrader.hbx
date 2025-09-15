@@ -41,15 +41,13 @@ common.hbRunProto();
 // ------------- Paste the copied code above here
 
 
+// Add a writeln to your getFieldValue in the copied code like the below example
+// writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
+
 // Right-click in this editor window and select "HB.js Commands > Run"  The total value of shares held for Casey Import Export
 // should be displayed in the HBJS TERMINAL OUTPUT below
 
-//Example for value of shares held
-// writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
-
 /*
- * Using the line above as a sample see if you can output other fields off the "Real-Time Quote" screen.  
- * 
  * Field names like VALUE and HELD are field names the programmer chose when TRAD was originally 
  * written.  We are not screen scraping but retrieving values using the field names the programmer
  * chose.
