@@ -139,6 +139,7 @@ function main () {
 main();
 
 /*
+<action item>
  * You can compile and deploy (MAKE) this code by right-clicking in this editor window and selecting 
  * "HB.js Commands > Make". Leverage the provided external link at the top of your WorkshopScenarios.pdf 
  * to view the output. Do not include the ".hbx" 
@@ -146,6 +147,7 @@ main();
 
 
 /*
+<action item>
  * More protections could be built into this service.  Try running the service with companies=X or companies=6.
  * Can you improve this service further???
  */
