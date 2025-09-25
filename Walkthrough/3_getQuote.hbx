@@ -17,6 +17,7 @@ common.hbRunProto();
  * This allows us to get the "Real-Time Quote" for any company by simply passing in
  * a different company number.
  * 
+<action item>
  * However when you execute the code below (try it: right click HB.js Commands > Run) you receive
  * the same company with the same values.
  * 
@@ -28,6 +29,7 @@ common.hbRunProto();
  * we are not backing up to the Select Company screen. HB.js does not change the flow
  * of the transaction.
  * 
+<action item>
  * The command to press the PF3 is hb.run('HB_AID=PF3'); That command needs
  * to be entered twice to back up to the select company screen. Add it to the getQuote
  * function now and retest.
@@ -43,7 +45,10 @@ common.hbRunProto();
  * and if not then throw an error.
  * 
  * How do you know what the BMS map names are? They are displayed in the lower left corner 
- * of the application explorer. Update the two statements you added with a second parameter 
+ * of the application explorer. 
+ *
+<action item>
+ * Update the two statements you added with a second parameter 
  * that is the BMS map name the application should be on after pressing the PF3 key.
  * hb.run('HB_AID=PF3', 'BOB'); You can get the BMS map name from the Application Explorer. If
  * you get it wrong the error message will tell you the BMS map name that was encountered and 
