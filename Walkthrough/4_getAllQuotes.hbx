@@ -13,12 +13,13 @@ debugging.checkDebugControl();
 common.hbRunProto();
 
 /*
+<action item>
  * Now run the service (right-click HB.js Commands > Run) and view the output in
  * the HBJS TERMINAL OUTPUT tab.
  *  
- * Below is most of the code you should have had in the last step.  I've added a main and
- * terminate function to better separate and identify sections of code.  I've also added
- * a "response" global variable that I am going to use to build up the data I want to return
+ * The code below is similar to what you should have had from the last step with a couple of additions.  
+ * I've added a main and terminate function to better separate and identify sections of code.  I've also 
+ * added a "response" global variable that I am going to use to build up the data I want to return
  * to the calling client.
  */
 
@@ -75,6 +76,7 @@ function getQuote(companyNumber) {
     }
 
     /*
+<action item>
      * Use the Application Explorer and the two existing fields in the above example to add the following 
      * fields from the "Real-Time Quote" to the JavaScript object "quote" above:
      * 
@@ -96,6 +98,7 @@ function getQuote(companyNumber) {
 }
 
 /*
+<action item>
  * Update the main function below to get all four companies.  You could do that simply by 
  * adding to more calls to getQuote, but it would be better to use a for-loop to iterate over
  * the four companies.  It is easy to find the syntax and examples of JavaScript, search for
