@@ -30,6 +30,7 @@ function initialize() {
   hb.run('HB_AID=ENTER', 'T002');
 
   /*
+<action item>
    * Now that we are passing input in via the query string we can no longer test
    * our service by executing it in VS Code. From now on we will have to "make" or 
    * deploy our service to test it, if you right-click HB.js Commands > Run the service will fail
@@ -99,6 +100,7 @@ function main () {
   let companies = initialize();
 
   /* 
+<action item>
    * Below is our orginal loop from the previous exercise. Update it to iterate over the list of 
    * companies. Again, there are lots of examples of JavaScript for loops
    * iterating over a list of array elements on the net. After updating
