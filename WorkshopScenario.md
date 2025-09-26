@@ -24,15 +24,15 @@ TechDocs: https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostb
 
 HB.js Icon (Left - Side Panel)
 
-![HB.js Icon](./ScreenShots/hbjsIcon.png)
+<img src="./ScreenShots/hbjsIcon.png" width="100" height="100">
 
 Right - Click > Set Default Repository 
 
-![Set Default Repository](./ScreenShots/defaultRepo.png)
+<img src="./ScreenShots/defaultRepo.png" width="300" height="100">
 
 Configuration is Correct (three check marks, final on hbscript)
 
-<img src="./ScreenShots/correctConfig.png" width="400" height="200">
+<img src="./ScreenShots/correctConfig.png" width="300" height="150">
 
 ## Configure:
 1. Click on the HB.js icon
