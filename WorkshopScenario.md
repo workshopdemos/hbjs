@@ -49,19 +49,32 @@ Configuration is Correct (three check marks, final on hbscript)
 
 Access the Exercises (Left - Panel Explorer tab > Walkthrough)
 
+<img src="./ScreenShots/accessExercises.png" width="200" height="100">
 
 ### Scenario #2:
 Accessing the Application Explorer
 
+<img src="./ScreenShots/accessAE.png" width="250" height="100">
+
 Entering Starting Transaction
+
+<img src="./ScreenShots/enterStartingTransaction.png" width="250" height="100">
 
 Open Code Flow
 
+<img src="./ScreenShots/openCodeFlow.png" width="300" height="100">
+
 Screen 1 Input Field
+
+<img src="./ScreenShots/screen1.png" width="300" height="150">
 
 Screen 2 Input Field 
 
+<img src="./ScreenShots/screen2.png" width="300" height="150">
+
 Added Field to Code Flow
+
+<img src="./ScreenShots/codeFlow.png" width="300" height="200">
 
 ## Scenario #1: Hello World API
 
