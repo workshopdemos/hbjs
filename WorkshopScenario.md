@@ -32,7 +32,7 @@ Right - Click > Set Default Repository
 
 Configuration is Correct (three check marks, final on hbscript)
 
-![Configuration Correct](./ScreenShots/correctConfig.png)
+<img src="./ScreenShots/correctConfig.png" width="400" height="200">
 
 ## Configure:
 1. Click on the HB.js icon
