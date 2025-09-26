@@ -22,18 +22,23 @@ TechDocs: https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostb
 
 ## Configuration Screenshots:
 
-HB.js Icon (Left - Side Panel) 
-	
+HB.js Icon (Left - Side Panel)
+
+![HB.js Icon](./ScreenShots/hbjsIcon.png)
+
 Right - Click > Set Default Repository 
+
+![Set Default Repository](./ScreenShots/defaultRepo.png)
 
 Configuration is Correct (three check marks, final on hbscript)
 
+![Configuration Correct](./ScreenShots/correctConfig.png)
 
-Configure:
-Click on the HB.js icon
-Expand Demo & Training3 (using the arrows)
-Enter your user ID and password if prompted (pop-up box, top middle of screen) 
-Right - Click on hbscript > Set Default Repository
+## Configure:
+1. Click on the HB.js icon
+2. Expand Demo & Training3 (using the arrows)
+3. Enter your user ID and password if prompted (pop-up box, top middle of screen) 
+4. Right - Click on hbscript > Set Default Repository
 
 
 ## Scenario Screen Shots for Reference: 
