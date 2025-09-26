@@ -74,7 +74,7 @@ Screen 2 Input Field
 
 Added Field to Code Flow
 
-<img src="./ScreenShots/codeFlow.png" width="300" height="200">
+<img src="./ScreenShots/codeFlowAddField.png" width="300" height="200">
 
 ## Scenario #1: Hello World API
 
@@ -101,7 +101,7 @@ Windows: Alt+X M/P/R
 Mac: ⌥+X M/P/R
 
 
-HB.js Badge: 
+<img src="./ScreenShots/apiCreator.jpg" width="200" height="200">
 
 
 ## Scenario #2: Code Flow
