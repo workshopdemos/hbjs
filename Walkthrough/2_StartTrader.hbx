@@ -20,17 +20,17 @@ common.hbRunProto();
  * This will be done leveraging the application explorer and code flow within the HB.js extension. 
  *
  *
- * Open the Application Explorer and enter the starting transaction "TRAD". (Screenshots 5&6)
+ * Open the Application Explorer and enter the starting transaction "TRAD". (Reference Screenshots)
  * Find the Code Flow by opening the tab on the right hand side of your screen. Watch as it 
- * updates with each of the following steps. (Screenshot 7)
+ * updates with each of the following steps. (Reference Screenshots)
  * 
  *  
  * After starting TRAD: 
- *      Select Casey Import Export by entering a "1" in the input field and press enter. (Screenshot 8)
- *      Select New Real-Time Quote by entering a "1" in the input field and press enter. (Screenshot 9)
+ *      Select Casey Import Export by entering a "1" in the input field and press enter. (Reference Screenshots)
+ *      Select New Real-Time Quote by entering a "1" in the input field and press enter. (Reference Screenshots)
  * 
  * On the "Real-Time Quote" screen double click on any fields of interest, like the values for "Number of Shares Held" and 
- * "Value of Shares Held". Double clicking on these fields will add them to the "Code Flow". (Screenshot 10)
+ * "Value of Shares Held". Double clicking on these fields will add them to the "Code Flow". (Reference Screenshots)
  * 
  * Copy the code generated in "Code Flow" and paste it below
  */

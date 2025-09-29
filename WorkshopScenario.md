@@ -5,7 +5,7 @@
 
 In this workshop you will create a web service that orchestrates multiple CICS transactions, creating a business-process oriented API.
 
-Reference the provided instructions [here](./WorkshopAccess.md) to access your workshop evironment. Let us know if you have any questions.
+Instructions will be provided to access your workshop evironment. Let us know if you have any questions.
 
 ## Getting Started:
 
