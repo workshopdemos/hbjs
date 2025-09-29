@@ -1,0 +1,57 @@
+/*
+ * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and 
+ * selecting rename. The new file name has been provided in your WorkshopScenario.pdf
+ * Format: CUSTO##_Playback
+ */
+
+// Create the hb object that can interact with CICS transactions
+let hb = new HB.Session();
+
+// "require" JavaScript packages with predefined utilities that we will use when creating services
+let common = require('common', 'hbutils');
+let debugging = require('debugging', 'hbutils');
+
+// Using utilities out of the packages above to setup some default error checking and debugging
+debugging.checkDebugControl();
+common.hbRunProto();
+
+ /* 
+ * The goal of this script is to create an API leveraging the code flow within your Application Explorer Playback file.
+ * This API should print to the screen the current number of shares held for company Casey Import Export. 
+ *
+ *
+ * Right - click on the TRAD_TestCase.json file in your explorer view on the left and select
+ * HB.js Commands > Application Explorer Playback. 
+ * Once the playback view has loaded click anywhere within the "green screen" image, note this is a drawing, not
+ * a real green screen, and page down twice.
+ * 
+ * Double click on the number to the right of "Number of Shares Held:"
+ * 
+ * Page down 4 times. 
+ * 
+ * Double click on the number to the right of "Number of Shares Held:". It should now have increased by 50. 
+ * 
+ * Continue paging down until the screen stops changing, open the "Code Flow" tab on the right and click copy. 
+ * 
+ * You should notice two "hb.getFieldValue('HELD');" commands within the code flow. Once you have pasted the full 
+ * code flow into the indicated space below, wrap both in writeln() statements. 
+ */
+
+// ------------- Paste the copied code below here
+
+
+// ------------- Paste the copied code above here
+
+
+// In your writeln() statements, add an easy to understand comment like the examples below.
+// writeln('Total Value of Shares Held Before = ', hb.getFieldValue('VALUE'));
+// writeln('Total Value of Shares Held After = ', hb.getFieldValue('VALUE'));
+
+// Right-click in this editor window and select "HB.js Commands > Run"  The total value of shares held for Casey Import Export
+// should be displayed twice in the HBJS TERMINAL OUTPUT below with a difference of 50 between the two. 
+
+/*
+ * Field names like VALUE and HELD are field names the programmer chose when TRAD was originally 
+ * written.  We are not screen scraping but retrieving values using the field names the programmer
+ * chose.
+ */

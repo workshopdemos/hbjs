@@ -1,0 +1,179 @@
+/*
+ * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and 
+ * selecting rename. The new file name has been provided in your Tests_WorkshopScenario.pdf
+ * Format: CUSTO##_ManualTests
+ */
+
+// Create the hb object that can interact with CICS transactions
+let hb = new HB.Session();
+
+// "require" JavaScript packages with predefined utilities that we will use when creating services
+let common = require('common', 'hbutils');
+let debugging = require('debugging', 'hbutils');
+
+// Using utilities out of the packages above to setup some default error checking and debugging
+debugging.checkDebugControl();
+common.hbRunProto();
+
+//Enable JSON.stringify and other similar commands 
+include('JSON', 'hbutils');
+
+//Declare your variables
+var result = {};
+var pass = 0; 
+var fail = 0;
+
+/*
+Note the staticTest() calls after each hb.run() command. These validate the screen, name, value and 
+position of the provided field using field - value pairs against passed in, static values. 
+If the field name does not exist on the expected screen, both value and position will fail. 
+*/
+
+//<action>
+/*
+Right-click in this editor window and select "HB.js Commands > Run". You should see 8 tests passed and 2 failed 
+with the first test passing all checks. Find the output in the HB.JS TERMINAL below.  
+In the first staticTest(), change 'COMP1' to 'fakeInput'. 
+Run the tests again and note the change in output. 
+Revert your change so once again 8 tests are passing and 2 fail.
+*/
+
+//<information>
+/*
+The failing tests are checking the current number of shares held for Casey Import Export. 
+Logically this number is fluid and will change as shares are bought and sold, causing the failure. 
+If time allows, reference 4_dynamicExample.hbx for a dynamic solution. 
+*/
+
+//<action>
+/*
+During this exercise, attempt to resolve the errors by getting the static 'value' inputs correct. 
+Using the playback file mentioned in scenario 2, and the code flow skills you gained in said scenario, 
+add in writeln() statements before the failing tests (marked below with comments) to determine the true 
+current number of shares held. 
+Change the two '4460' inputs below to pass, accounting for the number your script will purchase on run. 
+*/
+
+/*
+Once you have 10 passing tests, congrats, you have completed the workshop!
+*/
+
+function main(){
+    try {
+        //Starting Transaction
+        hb.set('hb_entry', 'TRAD');
+        hb.run('HB_AID=ENTER', 'T002');
+
+        //Run any tests for screen 0 
+        staticTest('T002', {name: 'COMP1', value: 'Casey Import Export', position: 429});
+        staticTest('T002', {name: 'COMP2', value: 'Glass and Luget Plc', position: 589});
+        staticTest('T002', {name: 'COMP3', value: 'Headworth Electrical', position: 749});
+        staticTest('T002', {name: 'COMP4', value: 'My Great Software', position: 909});
+
+        //Navigate to screen 1 
+        hb.set('OPTION', '1');
+        hb.run('HB_AID=ENTER', 'T003');
+
+        //Run any tests for screen 1
+
+        //Navigate to screen 2
+        hb.set('OPT2', '1');
+        hb.run('HB_AID=ENTER', 'T004');
+
+
+        //Run any tests for screen 2
+        staticTest('T004', {name: 'SHRNOW', value: '00079.00', position: 742});
+//This test should fail
+        staticTest('T004', {name: 'HELD', value: '4460', position: 1262});
+
+        //Navigate to screen 3
+        hb.run('HB_AID=PF3', 'T003');
+
+        //Run any tests for screen 3
+
+        //Navigate to screen 4
+        hb.set('OPT2', '2');
+        hb.run('HB_AID=ENTER', 'T005');
+
+        //Run any tests for screen 4
+        staticTest('T005', {name: 'SHRBUY', value: '', position: 1003, protected: false});
+
+        //Navigate to screen 5
+        hb.set('SHRBUY', '50');
+        hb.run('HB_AID=ENTER', 'T003');
+
+        //Run any tests for screen 5
+        staticTest('T003', {name: 'field_r17_c20', value: 'Please select an option (1,2 or 3):', position: 1299});
+
+        //Navigate to screen 6
+        hb.set('OPT2', '1');
+        hb.run('HB_AID=ENTER', 'T004');
+
+        //Run any tests for screen 6
+        staticTest('T004', {name: 'SHRNOW', value: '00079.00', position: 742});
+//This test should fail
+        staticTest('T004', {name: 'HELD', value: '4460', position: 1262});
+
+    } catch (e) {
+        writeln (e);
+    }
+}
+
+function staticTest(screen, field){
+	if(field.name){
+		let key = screen+'_'+field.name;
+		result[key] = {}
+		result[key].pass = true;
+		//Does the value exist
+		const fieldValue = hb.getField(field.name);
+		if (fieldValue === undefined) {
+			result[key].pass = false;
+			result[key].exists = false;
+			return;
+		} else {
+			result[key].pass = true;
+			result[key].exists = true;
+		}
+		var val,pos;
+		//Is the value correct? 
+		if(field.value){
+			val = hb.getFieldValue(field.name) === field.value ? true : false;
+			if(val === false){
+				result[key].pass = false;
+			}
+			result[key].value = val;
+		}
+		//Is the position correct? 
+		if(field.position){
+			pos = hb.getField(field.name).pos === field.position ? true : false;
+			if(pos === false){
+				result[key].pass = false;
+			}
+			result[key].position = pos;
+		}
+        //Tally pass/fail numbers
+		if(result[key].pass === true){
+			pass ++;
+		} else {
+			fail ++;
+		}
+	}
+}
+
+function termination() {
+	// session clean up
+	hb.run('hb_aid=pf12&hb_delete_session=1');
+
+    //Add your totals
+	result.summary = {
+		passed: pass,
+		failed: fail
+	}
+
+    //Write out your result variable
+	write(common.toJSONString(result));
+}
+
+main();
+
+termination();
