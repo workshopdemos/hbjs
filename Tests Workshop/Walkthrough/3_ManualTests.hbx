@@ -23,40 +23,40 @@ var result = {};
 var pass = 0; 
 var fail = 0;
 
-/*
-Note the staticTest() calls after each hb.run() command. These validate the screen, name, value and 
-position of the provided field using field - value pairs against passed in, static values. 
-If the field name does not exist on the expected screen, both value and position will fail. 
-*/
+    /*
+    Note the staticTest() calls below after each hb.run() command. These validate the screen, name, value and 
+    position of the provided field using field - value pairs against passed in, static values. 
+    If the field name does not exist on the expected screen, all checks will fail. 
+    */
 
 //<action>
-/*
-Right-click in this editor window and select "HB.js Commands > Run". You should see 8 tests passed and 2 failed 
-with the first test passing all checks. Find the output in the HB.JS TERMINAL below.  
-In the first staticTest(), change 'COMP1' to 'fakeInput'. 
-Run the tests again and note the change in output. 
-Revert your change so once again 8 tests are passing and 2 fail.
-*/
+    /*
+    Right-click in this editor window and select "HB.js Commands > Run". You should see 8 tests passed and 2 failed 
+    with the first test passing all checks. Find the output in the HB.JS TERMINAL below.  
+    In the first staticTest(), change 'COMP1' to 'fakeInput'. 
+    Run the tests again and note the change in output. 
+    Revert your change so once again 8 tests are passing and 2 fail.
+    */
 
 //<information>
-/*
-The failing tests are checking the current number of shares held for Casey Import Export. 
-Logically this number is fluid and will change as shares are bought and sold, causing the failure. 
-If time allows, reference 4_dynamicExample.hbx for a dynamic solution. 
-*/
+    /*
+    The failing tests are checking the current number of shares held for Casey Import Export. 
+    Logically this number is fluid and will change as shares are bought and sold, causing the failure. 
+    If time allows, reference 4_dynamicExample.hbx for a dynamic solution. 
+    */
 
 //<action>
-/*
-During this exercise, attempt to resolve the errors by getting the static 'value' inputs correct. 
-Using the playback file mentioned in scenario 2, and the code flow skills you gained in said scenario, 
-add in writeln() statements before the failing tests (marked below with comments) to determine the true 
-current number of shares held. 
-Change the two '4460' inputs below to pass, accounting for the number your script will purchase on run. 
-*/
+    /*
+    During this exercise, attempt to resolve the errors by getting the static 'value' inputs correct. 
+    Using the playback file mentioned in scenario 2, and the code flow skills you gained in said scenario, 
+    add in writeln() statements before the failing tests (marked below with comments) to determine the true 
+    current number of shares held. 
+    Change the two '4460' inputs below to pass, accounting for the number your script will purchase on run. 
+    */
 
-/*
-Once you have 10 passing tests, congrats, you have completed the workshop!
-*/
+    /*
+    Once you have 10 passing tests, congrats, you have completed the workshop!
+    */
 
 function main(){
     try {
