@@ -23,40 +23,9 @@ var result = {};
 var pass = 0; 
 var fail = 0;
 
-    /*
-    Note the staticTest() calls below after each hb.run() command. These validate the screen, name, value and 
-    position of the provided field using field - value pairs against passed in, static values. 
-    If the field name does not exist on the expected screen, all checks will fail. 
-    */
-
-//<action>
-    /*
-    Right-click in this editor window and select "HB.js Commands > Run". You should see 8 tests passed and 2 failed 
-    with the first test passing all checks. Find the output in the HB.JS TERMINAL below.  
-    In the first staticTest(), change 'COMP1' to 'fakeInput'. 
-    Run the tests again and note the change in output. 
-    Revert your change so once again 8 tests are passing and 2 fail.
-    */
-
-//<information>
-    /*
-    The failing tests are checking the current number of shares held for Casey Import Export. 
-    Logically this number is fluid and will change as shares are bought and sold, causing the failure. 
-    If time allows, reference 4_dynamicExample.hbx for a dynamic solution. 
-    */
-
-//<action>
-    /*
-    During this exercise, attempt to resolve the errors by getting the static 'value' inputs correct. 
-    Using the playback file mentioned in scenario 2, and the code flow skills you gained in said scenario, 
-    add in writeln() statements before the failing tests (marked below with comments) to determine the true 
-    current number of shares held. 
-    Change the two '4460' inputs below to pass, accounting for the number your script will purchase on run. 
-    */
-
-    /*
-    Once you have 10 passing tests, congrats, you have completed the workshop!
-    */
+//Set these values manually or, pass them in from a url
+var buy = 50;
+var initial;
 
 function main(){
     try {
@@ -83,8 +52,14 @@ function main(){
 
         //Run any tests for screen 2
         staticTest('T004', {name: 'SHRNOW', value: '00079.00', position: 742});
-//This test should fail
-        staticTest('T004', {name: 'HELD', value: '4460', position: 1262});
+//This test should fail -- comment it out
+        // staticTest('T004', {name: 'HELD', value: '4460', position: 1262});
+
+/*
+Change this test to only validate screen, name, and position. Then grab and store the initial value.  
+*/
+        staticTest('T004', {name: 'HELD', position: 1262});
+        intial = hb.getFieldValue('HELD');
 
         //Navigate to screen 3
         hb.run('HB_AID=PF3', 'T003');
@@ -111,14 +86,16 @@ function main(){
 
         //Run any tests for screen 6
         staticTest('T004', {name: 'SHRNOW', value: '00079.00', position: 742});
-//This test should fail
-        staticTest('T004', {name: 'HELD', value: '4460', position: 1262});
+//This test should fail -- comment it out
+        // staticTest('T004', {name: 'HELD', value: '4460', position: 1262});
+//Create a new test that is dynamically checking the purchase has been made
+        staticTest('T004', {name: 'HELD', value: initial + buy, position: 1262});
 
     } catch (e) {
         result.error = [];
         result.error.push(e);
     }
-}
+}   
 
 function staticTest(screen, field){
 	if(field.name){
