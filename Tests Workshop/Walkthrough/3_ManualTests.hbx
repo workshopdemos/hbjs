@@ -41,17 +41,15 @@ var fail = 0;
 //<information>
     /*
     The failing tests are checking the current number of shares held for Casey Import Export. 
-    Logically this number is fluid and will change as shares are bought and sold, causing the failure. 
+    Logically this number is fluid and will change as shares are bought and sold, so the value
+    should not be a part of a hard coded check. 
     If time allows, reference 4_dynamicExample.hbx for a dynamic solution. 
     */
 
 //<action>
     /*
-    During this exercise, attempt to resolve the errors by getting the static 'value' inputs correct. 
-    Using the playback file mentioned in scenario 2, and the code flow skills you gained in said scenario, 
-    add in writeln() statements before the failing tests (marked below with comments) to determine the true 
-    current number of shares held. 
-    Change the two '4460' inputs below to pass, accounting for the number your script will purchase on run. 
+    During this exercise, attempt to resolve the errors. There are several potential methods to achieve this.  
+    "Draw on your experience from exercise 2, including the playback file, code flow, and writeln() statements.
     */
 
     /*
