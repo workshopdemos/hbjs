@@ -102,10 +102,6 @@ Leveraging HB.js Primitives in VS Code:
     - Windows: Alt+X M/P/R
     - Mac: ⌥+X M/P/R
 
-<div style="text-align: center;"> 
-    <img src="./ScreenShots/apiCreator.jpg" width="200" height="200">
-</div>
-
 
 ## Scenario #2: Code Flow
 
