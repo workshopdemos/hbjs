@@ -1,5 +1,5 @@
 # HB.js in VS Code
-## Workshop Scenarios
+## Workshop Standard Scenarios
 1.) Hello World API
 
 2.) Generate Code with the Application Explorer and Code Flow
@@ -12,7 +12,16 @@
 
 6.) Nearly Production Ready Review 
 
-## Bonus Content!! 
+### Bonus Content!! 
 1.) Improve the Error Checking in the Service from Scenario 6 
 
 2.) Add in a Call to Check the Weather
+
+## Workshop Testing Scenarios
+1.) Hello World API
+
+2.) Generate Code with the Application Explorer Playback and Code Flow
+
+3.) Debug a Sample Testing Script
+
+4.) Example Testing Script
