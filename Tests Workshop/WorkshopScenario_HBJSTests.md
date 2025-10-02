@@ -118,7 +118,7 @@ When your codeflow external link outputs an accurate Total Value of Shares Held,
 
 ### Scenario #2 Key Takeaways: 
 
- - Application Explorer
+ - Application Explorer Playback
     - Double click on field 
  - Code Flow 
  - Field names like VALUE and HELD are field names the programmer chose when the trader application was originally written. We are not screen scraping but retrieving values using the field names the programmer chose via field-value pairs. 
@@ -132,3 +132,22 @@ When your script output matches the output detailed in the file, you have comple
  - Original File Name: 3_
  - Rename to fileName: {USERID_StartTrader}
 
+### Scenario #3 Key Takeaways:
+
+ - How to leverage HB.js to perform static tests on your CICS application without screen scraping
+ - Static Test Functions
+    - screen
+    - name
+    - value
+    - position
+
+
+## Scenario #4: Dynamic Tests Example
+Access the fourth exercise in the Walkthrough folder and follow the instructions inside. 
+
+This script has no coding tasks so review the code and when you are confident you 
+understand it, you have completed the fourth exercise, congratulations! 
+
+### Scenario #4 Key Takeaways:
+
+ - How to leverage HB.js to perform a dynamic test on your CICS application without screen scraping
