@@ -132,7 +132,15 @@ When your script output matches the output detailed in the file, you have comple
  - Original File Name: 3_
  - Rename to fileName: {USERID_StartTrader}
 
- ### Scenario #3 Key Takeaways:
+### Scenario #3 Key Takeaways:
+
+ - How to leverage HB.js to perform static tests on your CICS application without screen scraping
+ - Static Test Functions
+    - screen
+    - name
+    - value
+    - position
+
 
 ## Scenario #4: Dynamic Tests Example
 Access the fourth exercise in the Walkthrough folder and follow the instructions inside. 
@@ -141,3 +149,5 @@ This script has no coding tasks so review the code and when you are confident yo
 understand it, you have completed the fourth exercise, congratulations! 
 
 ### Scenario #4 Key Takeaways:
+
+ - How to leverage HB.js to perform a dynamic test on your CICS application without screen scraping
