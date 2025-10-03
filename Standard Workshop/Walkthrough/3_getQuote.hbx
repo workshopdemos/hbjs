@@ -32,7 +32,7 @@ common.hbRunProto();
 <action item>
  * The command to press the PF3 is hb.run('HB_AID=PF3'); That command needs
  * to be entered twice to back up to the select company screen. Add it to the getQuote
- * function now and retest.
+ * function, after the writeln statements, and retest.
  * 
  * If you have done the above correctly you will receive Total Value of Shares Held for two 
  * companies. But notice that the hb.run you added does not look like other hb.runs, they all 
