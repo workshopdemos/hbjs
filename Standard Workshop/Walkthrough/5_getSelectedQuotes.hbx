@@ -108,6 +108,18 @@ function main () {
    * browser using the external link provided at the top of your WorkshopScenario.md file. 
    * Do not include the ".hbx" as this will return the result of a "Put" or an error if 
    * no "Put" was performed. 
+   * 
+   * If you submit your standard url without inputs passed in, your script will fail. 
+   * Append "?companies=1,2,3,4" after the file name to see your desired output. 
+   * 
+   * Example: 
+   * {externalURL/fileName}?companies=1,2,3,4
+   * 
+   * Switch up the numbers passed in to change your output. What happens if you pass in 20 different 
+   * numbers between 1 & 4? 
+   * 
+   * What happens if you pass in a number not in the appropriate range? 
+   * Think about what error checking you would add in to the script and then try it out!
    */ 
   
   for (let i = 1; i < 5; i++) {
