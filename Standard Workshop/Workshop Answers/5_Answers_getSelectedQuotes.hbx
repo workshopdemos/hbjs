@@ -108,7 +108,7 @@ function main () {
    * no "Put" was performed. 
    */ 
   
-  for (let i = 1; i < companies.length + 1; i++) {
+  for (let i = 0; i < companies.length; i++) {
     getQuote(companies[i].toString());
   }
 
