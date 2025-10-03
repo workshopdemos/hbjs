@@ -1,6 +1,6 @@
 /*
  * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
- * new file name has been provided in your WorkshopScenario.pdf
+ * new file name has been provided in your WorkshopScenario.md
  * Format: Cust0##_getSelectedQuotes
  */
 
@@ -103,7 +103,7 @@ function main () {
    * companies. Again, there are lots of examples of JavaScript for loops
    * iterating over a list of array elements on the net. After updating
    * the loop below "make it" (right-click HB.js Commands > Make) and then run it from a 
-   * browser using the external link provided at the top of your WorkshopScenario pdf. 
+   * browser using the external link provided at the top of your WorkshopScenario.md. 
    * Do not include the ".hbx" as this will return the result of a "Put" or an error if 
    * no "Put" was performed. 
    */ 

@@ -1,6 +1,6 @@
 /*
  * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
- * new file name has been provided in your WorkshopScenario.pdf
+ * new file name has been provided in your WorkshopScenario.md
  * Format: CUSTO##_getQuoteFinal
  */
 
@@ -141,7 +141,7 @@ main();
 /*
 <action item>
  * You can compile and deploy (MAKE) this code by right-clicking in this editor window and selecting 
- * "HB.js Commands > Make". Leverage the provided external link at the top of your WorkshopScenarios.pdf 
+ * "HB.js Commands > Make". Leverage the provided external link at the top of your WorkshopScenarios.md 
  * to view the output. Do not include the ".hbx" 
 */
 
