@@ -15,8 +15,14 @@ USERID: CUSTO##
 
 Password: CUSTO##
 
-External Link: 
-https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/{fileName}
+External Link 
+
+Session 1: 
+https://external-943025290693663.proxy.sn.ws.broadcom.com/hbutils/st-index.html
+
+Session 2: 
+https://external-632454778799570.proxy.sn.ws.broadcom.com/hbutils/st-index.html
+
 
 TechDocs: https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0.html
 
