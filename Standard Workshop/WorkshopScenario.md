@@ -20,10 +20,10 @@ External Link
 Note: Please ask the instructor for your session id and only launch the corresponding external link. 
 
 Session 1: 
-https://external-943025290693663.proxy.sn.ws.broadcom.com/hbutils/{fileName}
+https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/{fileName}
 
 Session 2: 
-https://external-632454778799570.proxy.sn.ws.broadcom.com/hbutils/{fileName}
+https://external-632454778799570.proxy.sn.ws.broadcom.com/hbscript/{fileName}
 
 
 TechDocs: https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0.html
