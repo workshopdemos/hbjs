@@ -22,8 +22,11 @@
  * change the service name to the name you used above.
  * 
  * Remember to change the "##" to your user number 
+ * External Links: 
+ *   Session 1: https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/{fileName}
+ *   Session 2: https://external-632454778799570.proxy.sn.ws.broadcom.com/hbscript/{fileName}
  * Results of "Put"
- * https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/CUSTO##_HelloWorld.hbx
+ * {External Link}/CUSTO##_HelloWorld.hbx
  * To see the "Make" output, remove the .hbx
- * https://external-943025290693663.proxy.sn.ws.broadcom.com/hbscript/CUSTO##_HelloWorld
+ * {External Link}/CUSTO##_HelloWorld
  */
