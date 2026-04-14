@@ -24,17 +24,16 @@ common.hbRunProto();
  */
 
 // ------------- PASTE THE COPIED CODE FROM "CODE FLOW" BELOW HERE:
-    hb.set('hb_entry', 'trad');
-    hb.run('HB_AID=ENTER', 'T002');
+   
 
-    hb.set('OPTION', '1');
-    hb.run('HB_AID=ENTER', 'T003');
 
-    hb.set('OPT2', '1');
-    hb.run('HB_AID=ENTER', 'T004');
 
-    hb.getFieldValue('VALUE');
-    writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
+
+
+
+
+
+
 // ------------- PASTE THE COPIED CODE ABOVE HERE
 
 
