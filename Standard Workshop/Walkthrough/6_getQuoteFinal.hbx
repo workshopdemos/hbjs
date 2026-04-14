@@ -1,16 +1,22 @@
 /*
- * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
- * new file name has been provided in your WorkshopScenario.md
- * Format: CUSTO##_getQuoteFinal
+ * STEP 1: RENAME THIS FILE
+ * Right-click "6_getQuoteFinal.hbx" in the explorer on the LEFT and rename it.
+ * New Name: CUSTO##_getQuoteFinal.hbx
  */
 
 /*
- * Below is a near production ready web service.  Added are try catches to protect from errors and to be sure
- * to always return valid JSON.  Also the option to return XML instead of JSON was added along with more
- * information on how the service ran, elapsed time, number of transaction executed, etc
+ * OVERVIEW: NEAR PRODUCTION READY SERVICE
+ * This final script demonstrates how to build a robust, professional API.
+ * * New Concepts Introduced:
+ * 1. Performance Tracking: Using HB.stckf() to measure elapsed time in microseconds.
+ * 2. Error Handling: Using try/catch/finally blocks to ensure the API always 
+ * returns a valid response, even if the mainframe transaction fails.
+ * 3. Multi-Format Output: The ability to return either JSON or XML based on 
+ * a "type" parameter in the URL.
+ * 4. Status Metadata: Returning success flags and transaction counts (tranCount).
  */
 
-// If I am going to measure the elapsed time I need to capture the start time of the service in microseconds
+// Capture the start time of the service in microseconds
 let startTime = HB.stckf();
 let hb = new HB.Session();
 
@@ -21,15 +27,16 @@ debugging.checkDebugControl();
 common.hbRunProto();
 
 /*
- * Lets update response to return more information than just the real-time quote
+ * The response object is now structured to provide detailed metadata 
+ * to the calling application.
  */
 var response = {
-    quotes: [],             // quotes will still contain the real time quote for each company
-    status: {               // Create a status block to keep all the info about how the service ran
-        success: false,     // Create a single flag the client can check to see if the service ran okay
-        elapsedTime: 0,     // How long did it take for the service to run, elapsed time
-        tranCount: 0,       // How many transactions did we run
-        errors: []          // A place to store error messages and the error stack
+    quotes: [],             // Array for the real-time quote data
+    status: {               // Metadata block
+        success: false,     // Becomes true only if the full logic completes
+        elapsedTime: 0,     // Total execution time
+        tranCount: 0,       // Total number of CICS transactions executed
+        errors: []          // Storage for error messages if a catch occurs
     }
 }
 
@@ -38,15 +45,17 @@ function initialize() {
     hb.run('HB_AID=ENTER', 'T002');
 
     let companies = HB.request.http.getValue('companies');
-
+    
+    // Defaulting: If no companies are provided, get all four.
     if (typeof(companies) === 'undefined') {  
-        companies = '1,2,3,4';      // "If companies is undefined, return real-time quotes for all four companies.
+        companies = '1,2,3,4';      
     }
 
     let type = HB.request.http.getValue('type');
 
+    // Defaulting: If no type is provided, return JSON.
     if (typeof(type) === 'undefined') {
-        type = 'json'               // If type is undefined then we will return JSON output
+        type = 'json'               
     }
 
     return ({
@@ -56,18 +65,14 @@ function initialize() {
 }
 
 function terminate(type) {
-
+    // Clean up the CICS session
     hb.run('hb_aid=pf12&hb_delete_session=1');
 
-    /*
-     * Now we are at the end lets set the elapsed time and transaction count into the response
-     */
+    // Calculate final performance metrics
     response.status.elapsedTime = HB.stckf() - startTime;
     response.status.tranCount = hb.tranCount;
 
-    /*
-     * Do we output XML or JSON, type will know
-     */
+    // Handle output format based on URL parameter
     if (type === 'xml') {
         common.headers.xml();
         write(common.jsToXML(response, 'getQuote'));
@@ -76,7 +81,6 @@ function terminate(type) {
         write(common.toJSONString(response));
     }
 }
-
 
 function getQuote(companyNumber) {
     hb.set('OPTION', companyNumber);
@@ -94,60 +98,53 @@ function getQuote(companyNumber) {
         totalValue: hb.getFieldValue('VALUE')
     }
 
-    // We now want to push are individual quotes on to the quotes array in the response
     response.quotes.push(quote);
 
     hb.run('hb_aid=pf3', 'T003');
     hb.run('hb_aid=pf3', 'T002');
-
 }
 
-
 function main () {
-
     /*
-     * We need to wrapper all of our code in a try catch so that if 
-     * any errors occur we will always output either JSON or XML
+     * We wrap the logic in a "try" block. If any screen error or logic 
+     * error occurs, the code jumps to the "catch" block instead of crashing.
      */
     try {
-        /*
-        * Initialize not only returns the list of companies to be processed
-        * but also the type of output to be produced
-        */
         var input = initialize();
         
         for (let i = 0; i < input.companies.length; i++) {
             getQuote(input.companies[i]);
         }
 
-        // if we get to here then no errors occured and we can indicate that
-        // the service was a success
+        // If we reach this line, the service was successful.
         response.status.success = true;
 
     } catch (e) {
-        // If an error was caught then push it on to the error array so that it
-        // can be produced in the JSON or XML output
+        // Log the error details into our response object.
         response.status.errors.push(e);
     } finally {
-        // If we run successfully or not we always want to run terminate
+        /*
+         * The "finally" block runs no matter what. This ensures we 
+         * ALWAYS clean up the session and ALWAYS return a response 
+         * to the user.
+         */
         terminate(input.type);
     }
 }
 
-
-
 main();
 
 /*
-<action item>
- * You can compile and deploy (MAKE) this code by right-clicking in this editor window and selecting 
- * "HB.js Commands > Make". Leverage the provided external link at the top of your WorkshopScenarios.md 
- * to view the output. Do not include the ".hbx" 
-*/
-
-
-/*
-<action item>
- * More protections could be built into this service.  Try running the service with companies=X or companies=6.
- * Can you improve this service further???
+ * ACTION ITEMS:
+ * 1. Right-click and select "HB.js Commands > Make".
+ * 2. Test in your browser. Note how the output now includes a "status" block.
+ * 3. Try changing the output format by adding "&type=xml" to your URL:
+ * Example: .../CUSTO##_getQuoteFinal?companies=1,2&type=xml
+ * 4. Observe the "tranCount" field. Why is it higher when you request more companies?
+ *
+ * BONUS CHALLENGE:
+ * Run the service with "companies=X" or "companies=6".
+ * Does the API crash, or does it return a clean error message in the JSON?
+ * Can you add a check in the initialize function to validate the input before 
+ * it reaches the getQuote function?
  */

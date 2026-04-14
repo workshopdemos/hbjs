@@ -1,68 +1,46 @@
 /*
- * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
- * new file name has been provided in your WorkshopScenario.md
- * Format: CUSTO##_getQuote
+ * STEP 1: RENAME THIS FILE
+ * Right-click "3_getQuote.hbx" in the explorer on the LEFT and rename it.
+ * New Name: CUSTO##_getQuote.hbx
  */
 
 let hb = new HB.Session();
-
 let common = require('common', 'hbutils');
 let debugging = require('debugging', 'hbutils');
 
 debugging.checkDebugControl();
 common.hbRunProto();
 
-/*
- * The code below is a working example of CUSTO##_StartTrader with proper function definitions.
- * This allows us to get the "Real-Time Quote" for any company by simply passing in
- * a different company number.
- * 
-<action item>
- * However when you execute the code below (try it: right click HB.js Commands > Run) you receive
- * the same company with the same values.
- * 
- * Do you know why?
- * 
- * If you look at the flow of TRAD, you have to navigate back to the "Select Company" 
- * screen before selecting the next company. On the Application Explorer you see
- * that means pressing the F3 or PF3 key twice. In the getQuote function below 
- * we are not backing up to the Select Company screen. HB.js does not change the flow
- * of the transaction.
- * 
-<action item>
- * The command to press the PF3 is hb.run('HB_AID=PF3'); That command needs
- * to be entered twice to back up to the select company screen. Add it to the getQuote
- * function, after the writeln statements, and retest.
- * 
- * If you have done the above correctly you will receive Total Value of Shares Held for two 
- * companies. But notice that the hb.run you added does not look like other hb.runs, they all 
- * have two parameters whereas yours only has one:  
- * hb.run('HB_AID=ENTER', 'T002'); vs hb.run('HB_AID=PF3');
- * 
- * The T002 above is the BMS map name for that screen. The hb.run is checking to make sure you 
- * ended up on the screen you expected to be on after the command was executed. The statement 
- * hb.run('HB_AID=ENTER', 'T002') says that after pressing the enter I expect to be on screen T002 
- * and if not then throw an error.
- * 
- * How do you know what the BMS map names are? They are displayed in the lower left corner 
- * of the application explorer. 
+/* * THE PROBLEM:
+ * If you Run this code now, it prints the same company twice. 
+ * Even though we call getQuote('1') and getQuote('4'), the output is identical.
  *
-<action item>
- * Update the two statements you added with a second parameter 
- * that is the BMS map name the application should be on after pressing the PF3 key.
- * hb.run('HB_AID=PF3', 'BOB'); You can get the BMS map name from the Application Explorer. If
- * you get it wrong the error message will tell you the BMS map name that was encountered and 
- * you can correct your code and retest.
- * 
- * Bonus Question: Why did the initial run of the provided script not throw a screen error? 
- * 
+ * WHY? 
+ * In the mainframe, we are still stuck on the "Real-Time Quote" screen. To select 
+ * a new company, we must navigate BACK to the "Select Company" screen.
+ *
+ * ACTION REQUIRED #1:
+ * In the getQuote function below, after the writeln statements, add the 
+ * command to press PF3 twice to back up to the selection menu:
+ * * hb.run('HB_AID=PF3');
+ * hb.run('HB_AID=PF3');
+ */
+
+/*
+ * ACTION REQUIRED #2 (BMS Maps):
+ * Notice the other hb.run commands have a second parameter, like 'T002'. 
+ * This is a BMS Map name. It acts as a safety check: "After I press Enter, 
+ * I expect to be on screen T002. If not, throw an error."
+ * * 1. Open the Application Explorer and look at the top-right corner.
+ * 2. Find the Map Name for the screen you land on after pressing PF3.
+ * 3. Update your PF3 commands to include that map name:
+ * Example: hb.run('HB_AID=PF3', 'MAPNAME');
  */
 
 function initialize() {
     hb.set('hb_entry', 'trad');
     hb.run('HB_AID=ENTER', 'T002');
 }
-
 
 function getQuote(companyNumber) {
     hb.set('OPTION', companyNumber);
@@ -75,8 +53,16 @@ function getQuote(companyNumber) {
     writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
     writeln();
 
+    // ADD YOUR PF3 COMMANDS BELOW THIS LINE:
+
 }
 
 initialize();
 getQuote('1');
 getQuote('4');
+
+/*
+ * BONUS QUESTION: 
+ * Why did the initial run (before you added PF3) not throw a screen error 
+ * even though it was on the wrong screen?
+ */

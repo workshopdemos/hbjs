@@ -1,32 +1,24 @@
 /*
- * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
- * new file name has been provided in your WorkshopScenario.md
- * Format: CUSTO##_getAllQuotes
+ * STEP 1: RENAME THIS FILE
+ * Right-click "4_getAllQuotes.hbx" in the explorer on the LEFT and rename it.
+ * New Name: CUSTO##_getAllQuotes.hbx
  */
 
 let hb = new HB.Session();
-
 let common = require('common', 'hbutils');
 let debugging = require('debugging', 'hbutils');
 
 debugging.checkDebugControl();
 common.hbRunProto();
 
-/*
-<action item>
- * Now run the service (right-click HB.js Commands > Run) and view the output in
- * the HBJS TERMINAL OUTPUT tab.
- *  
- * The code below is similar to what you should have had from the last step with a couple of additions.  
- * I've added a main and terminate function to better separate and identify sections of code.  I've also 
- * added a "response" global variable that I am going to use to build up the data I want to return
- * to the calling client.
+/* * GOAL: Move from printing text to the console to building a real JSON API.
+ * * In this exercise, we introduce:
+ * 1. Global Variables: The "response" array is available to all functions.
+ * 2. JavaScript Objects: Collecting multiple fields into one "quote" structure.
+ * 3. Session Cleanup: Using PF12 and delete_session to keep the mainframe tidy.
  */
 
-/*
- * Here I am declaring "response" as a global array variable.  It is global because it is 
- * declared outside of any function.
- */
+// Global array to store our results
 var response = new Array();
 
 function initialize() {
@@ -36,22 +28,17 @@ function initialize() {
 
 function terminate() {
     /*
-     * PF12 exits the trader application no matter what screen you are on, the hb_delete_session=1 
-     * deletes the remaining HB.js resources leaving nothing on the host.  The session would automatically
-     * timeout after 5 minutes of inactivity, but in a highly active system that might leave thousands
-     * or 10's of thousands of unused sessions consuming resources until they are automatically deleted.
-     * You should always clean up your session at the conclusion or your service.  hb_delete_session along
-     * with all HB.js are documented here:
-     * https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0.html
+     * Always clean up! PF12 exits the app, and hb_delete_session=1 clears 
+     * host resources. This prevents thousands of "ghost" sessions from 
+     * slowing down the system.
      */
     hb.run('hb_aid=pf12&hb_delete_session=1');
 
     /*
-     * Convert response to JSON and write it out
+     * This converts our JavaScript array into a JSON string for the browser.
      */
     write(common.toJSONString(response));
 }
-
 
 function getQuote(companyNumber) {
     hb.set('OPTION', companyNumber);
@@ -60,58 +47,51 @@ function getQuote(companyNumber) {
     hb.set('OPT2', '1');
     hb.run('HB_AID=ENTER', 'T004');
 
-    //Commented out from the previous exercise
-    
-    // writeln('Company Name: ', hb.getFieldValue('COMP41'));
-    // writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
-    // writeln();
-
     /*
-     * Instead of writing anything out here I'm going to put my 
-     * output into a JavaScript object and let my "terminate" function
-     * produce JSON output.
+     * STEP 2: ADD FIELDS
+     * Use the Application Explorer to find the field names for:
+     * - Current Share Price
+     * - Number of Shares Held
+     * - Commission Price 
+     * * Add them to the "quote" object below using hb.getFieldValue.
      */
 
     let quote = {
         companyName: hb.getFieldValue('COMP41'),
-        totalValue: hb.getFieldValue('VALUE')
-    }
+        totalValue: hb.getFieldValue('VALUE'),
+        // Add your new fields here:
+        
+    };
 
-    /*
-<action item>
-     * Use the Application Explorer and the two existing fields in the above example to add the following 
-     * fields from the "Real-Time Quote" to the JavaScript object "quote" above:
-     * 
-     *      Current Share Price
-     *      Number of Shares Held
-     *      Commission Price for buying and selling shares
-     * 
-     * After adding the fields retest your service (right-click HB.js Run)
-     */
-
-    /*
-     * Add quote to the end of the response array
-     */
+    // Push this individual company quote into our global response array
     response.push(quote);
 
+    // Back up to the selection screen
     hb.run('hb_aid=pf3', 'T003');
     hb.run('hb_aid=pf3', 'T002');
-
 }
 
 /*
-<action item>
- * Update the main function below to get all four companies.  You could do that simply by 
- * adding to more calls to getQuote, but it would be better to use a for-loop to iterate over
- * the four companies.  It is easy to find the syntax and examples of JavaScript, search for
- * "JavaScript for loop".  After updating, run the service (right-click HB.js Commands > Run)
+ * STEP 3: THE FOR-LOOP
+ * Instead of calling getQuote manually for every company, update the 
+ * main function to use a "for loop" to get all 4 companies (1 through 4).
  */
 
 function main () {
     initialize();
+    
+    // Replace these calls with a for loop:
     getQuote('1');
     getQuote('2');
+    
     terminate();
 }
 
 main();
+
+/*
+ * FINAL TEST:
+ * 1. Right-click and select "HB.js Commands > Run".
+ * 2. Look at the "HBJS TERMINAL OUTPUT". You should see a JSON string 
+ * containing data for all four companies.
+ */
