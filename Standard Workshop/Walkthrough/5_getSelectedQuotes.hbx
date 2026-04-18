@@ -1,132 +1,102 @@
 /*
- * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
- * new file name has been provided in your WorkshopScenario.md
- * Format: CUSTO##_getSelectedQuotes
+ * STEP 1: RENAME THIS FILE
+ * Right-click "5_getSelectedQuotes.hbx" in the explorer on the LEFT and rename it.
+ * New Name: CUSTO##_getSelectedQuotes.hbx
  */
 
-
 let hb = new HB.Session();
-
 let common = require('common', 'hbutils');
 let debugging = require('debugging', 'hbutils');
 
 debugging.checkDebugControl();
 common.hbRunProto();
 
-/*
- * 
- * Below is most of the code you should have had at the end of 4-getAllQuotes. Said service retrieved
- * all company quotes, but what if you only want the quote for company 1, for companies 1 and 3, 
- * or for some other combination. We should be able to pass a parameter to the service to specifiy 
- * which companies we want the real-time quote for instead of always returning all companies. 
- * We will do this by passing a parameter on the query string to specify which companies we want 
- * quotes for. Let's get our input in the initialize function.
+/* * GOAL: Make your API dynamic! 
+ * Instead of always getting all 4 companies, we will pass a list of specific 
+ * companies we want (e.g., 1 and 3) via the URL query string.
+ *
+ * IMPORTANT: Because this script requires input from a URL, the "Run" command 
+ * in VS Code will now fail. From this point on, you must use "Make" and test 
+ * the results in your web browser.
  */
 
 var response = new Array();
 
 function initialize() {
-  hb.set('hb_entry', 'trad');
-  hb.run('HB_AID=ENTER', 'T002');
+    hb.set('hb_entry', 'trad');
+    hb.run('HB_AID=ENTER', 'T002');
 
-  /*
-<action item>
-   * Now that we are passing input in via the query string we can no longer test
-   * our service by executing it in VS Code. From now on we will have to "make" or 
-   * deploy our service to test it, if you right-click HB.js Commands > Run the service will fail
-   * because there will be no value for companies (try this!)
-   */
+    /*
+     * GETTING INPUT:
+     * This line retrieves the "companies" list from your browser URL.
+     */
+    let companies = HB.request.http.getValue('companies');
 
-  let companies = HB.request.http.getValue('companies');
-
-  /* 
-   * The value of companies above will be a string containing "1,3". We need to be able to 
-   * iterate over the company numbers. Luckily there is a method called "split" that hangs off
-   * all strings that can split a string into an array based on a separator.
-   * companies.split(',') will separate the company numbers into array elements allowing us to
-   * easliy interate over them.
-   * 
-   * We could put companies in a global variable, but using too many global variables is considered 
-   * poor programming, instead we will split the string into an array and pass it
-   * back to the main function.
-   */
-
-  return companies.split(',');
+    /* * The variable 'companies' is a string like "1,3,4". 
+     * We use .split(',') to turn that string into a JavaScript Array.
+     */
+    return companies.split(',');
 }
 
 function terminate() {
+    hb.run('hb_aid=pf12&hb_delete_session=1');
+    
+    // Sets the browser header to JSON mode
+    common.headers.json();
 
-  hb.run('hb_aid=pf12&hb_delete_session=1');
-
-  /*
-   * Below I added an http content type header to indicated the output is JSON
-   */
-  common.headers.json();
-
-  write(common.toJSONString(response));
+    write(common.toJSONString(response));
 }
-
 
 function getQuote(companyNumber) {
-  hb.set('OPTION', companyNumber);
-  hb.run('HB_AID=ENTER', 'T003');
+    hb.set('OPTION', companyNumber);
+    hb.run('HB_AID=ENTER', 'T003');
 
-  hb.set('OPT2', '1');
-  hb.run('HB_AID=ENTER', 'T004');
+    hb.set('OPT2', '1');
+    hb.run('HB_AID=ENTER', 'T004');
 
-  let quote = {
-    companyName: hb.getFieldValue('COMP41'),
-    currentPrice: hb.getFieldValue('SHRNOW'),
-    sharesHeld: hb.getFieldValue('HELD'),
-    buyCommission: hb.getFieldValue('BUY'),
-    sellCommission: hb.getFieldValue('Sell'),
-    totalValue: hb.getFieldValue('VALUE')
-  }
+    let quote = {
+        companyName: hb.getFieldValue('COMP41'),
+        currentPrice: hb.getFieldValue('SHRNOW'),
+        sharesHeld: hb.getFieldValue('HELD'),
+        buyCommission: hb.getFieldValue('BUY'),
+        sellCommission: hb.getFieldValue('Sell'),
+        totalValue: hb.getFieldValue('VALUE')
+    };
 
-  response.push(quote);
+    response.push(quote);
 
-  hb.run('hb_aid=pf3', 'T003');
-  hb.run('hb_aid=pf3', 'T002');
-
+    hb.run('hb_aid=pf3', 'T003');
+    hb.run('hb_aid=pf3', 'T002');
 }
 
-
 function main () {
-  /*
-   * Initialize was updated to return a list of companies we are to
-   * get the real-time quote for, so here we must catch that array of
-   * companies that are returned
-   */
-  let companies = initialize();
+    /*
+     * We are "catching" the array of companies returned by initialize().
+     */
+    let companies = initialize();
 
-  /* 
-<action item>
-   * Below is our orginal loop from the previous exercise. Update it to iterate over the list of 
-   * companies. Again, there are lots of examples of JavaScript for loops
-   * iterating over a list of array elements on the net. After updating
-   * the loop below "make it" (right-click HB.js Commands > Make) and then run it from a 
-   * browser using the external link provided at the top of your WorkshopScenario.md file. 
-   * Do not include the ".hbx" as this will return the result of a "Put" or an error if 
-   * no "Put" was performed. 
-   * 
-   * If you submit your standard url without inputs passed in, your script will fail. 
-   * Append "?companies=1,2,3,4" after the file name to see your desired output. 
-   * 
-   * Example: 
-   * {externalURL/fileName}?companies=1,2,3,4
-   * 
-   * Switch up the numbers passed in to change your output. What happens if you pass in 20 different 
-   * numbers between 1 & 4? 
-   * 
-   * What happens if you pass in a number not in the appropriate range? 
-   * Think about what error checking you would add in to the script and then try it out!
-   */ 
+    /* * STEP 2: UPDATE THE LOOP
+     * The loop below is still hard-coded to 1-4. Update it to iterate 
+     * through the 'companies' array instead.
+     * * HINT: Use "for (let i = 0; i < companies.length; i++)" 
+     * and pass "companies[i]" to getQuote.
+     */
   
-  for (let i = 1; i < 5; i++) {
-    getQuote(i.toString());
-  }
+    for (let i = 1; i < 5; i++) {
+        getQuote(i.toString());
+    }
 
-  terminate();
+    terminate();
 }
 
 main();
+
+/*
+ * STEP 3: DEPLOY AND TEST
+ * 1. Right-click and select "HB.js Commands > Make".
+ * 2. Open your browser to your Session link.
+ * 3. ADD the query string to the end of the URL:
+ * Example: .../CUSTO##_getSelectedQuotes?companies=1,3
+ * * CHALLENGE: What happens if you pass a number that isn't 1-4? 
+ * What happens if you type a letter instead of a number?
+ */

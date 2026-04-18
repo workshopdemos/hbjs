@@ -1,54 +1,57 @@
 /*
- * Before making any changes to this file, rename it by right clicking the file name in the explorer to the right and selecting rename. The 
- * new file name has been provided in your WorkshopScenario.md
- * Format: CUSTO##_StartTrader
+ * STEP 1: RENAME THIS FILE
+ * Right-click "2_StartTrader.hbx" in the explorer on the LEFT and rename it.
+ * New Name: CUSTO##_StartTrader.hbx
  */
 
-// Create the hb object that can interact with CICS transactions
 let hb = new HB.Session();
-
-// "require" JavaScript packages with predefined utilities that we will use when creating services
 let common = require('common', 'hbutils');
 let debugging = require('debugging', 'hbutils');
 
-// Using utilities out of the packages above to setup some default error checking and debugging
 debugging.checkDebugControl();
 common.hbRunProto();
 
- /* 
- * The goal of this script is to create an API that gathers the total value of shares held for your chosen company and prints it to the screen. 
- * This will be done leveraging the application explorer and code flow within the HB.js extension. 
+/* * GOAL: Use the Application Explorer and Code Flow to get a stock value.
  *
- *
- * Open the Application Explorer and enter the starting transaction "TRAD". (Reference Screenshots)
- * Find the Code Flow by opening the tab on the right hand side of your screen. Watch as it 
- * updates with each of the following steps. (Reference Screenshots)
- * 
- *  
- * After starting TRAD: 
- *      Select Casey Import Export by entering a "1" in the input field and press enter. (Reference Screenshots)
- *      Select New Real-Time Quote by entering a "1" in the input field and press enter. (Reference Screenshots)
- * 
- * On the "Real-Time Quote" screen double click on any fields of interest, like the values for "Number of Shares Held" and 
- * "Value of Shares Held". Double clicking on these fields will add them to the "Code Flow". (Reference Screenshots)
- * 
- * Copy the code generated in "Code Flow" and paste it below
+ * 1. Open the HB.js side panel and launch the "Application Explorer".
+ * 2. Enter transaction "TRAD".
+ * 3. Follow the path: 
+ * - Option 1 (Casey Import Export) + Enter
+ * - Option 1 (New Real-Time Quote) + Enter
+ * 4. On the final screen, DOUBLE-CLICK the value for "Value of Shares Held".
+ * 5. Open the "Code Flow" tab and copy the generated code.
+ * 6. Paste that code in the section below.
  */
 
-// ------------- Paste the copied code below here
+// ------------- PASTE THE COPIED CODE FROM "CODE FLOW" BELOW HERE:
+   
 
 
-// ------------- Paste the copied code above here
 
 
-// Add a writeln to your getFieldValue in the copied code like the below example
-// writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
 
-// Right-click in this editor window and select "HB.js Commands > Run"  The total value of shares held for Casey Import Export
-// should be displayed in the HBJS TERMINAL OUTPUT below
+
+
+
+
+// ------------- PASTE THE COPIED CODE ABOVE HERE
+
 
 /*
- * Field names like VALUE and HELD are field names the programmer chose when TRAD was originally 
- * written.  We are not screen scraping but retrieving values using the field names the programmer
- * chose.
+ * STEP 2: PRINT THE OUTPUT
+ * Add the following line at the bottom of the pasted code to see the value:
+ * writeln('Total Value of Shares Held = ', hb.getFieldValue('VALUE'));
+ */
+
+/*
+ * STEP 3: TEST
+ * Right-click and select "HB.js Commands > Run".
+ * Check the "HBJS TERMINAL OUTPUT" for your stock value.
+ */
+
+/*
+ * CONCEPT: 
+ * We are using "field-value pairs". Instead of telling the computer to look 
+ * at a specific row and column (screen scraping), we are asking for the 
+ * data inside the field named "VALUE".
  */
